@@ -32,10 +32,10 @@ namespace ConferenceVision.Services
 			visionAPI = new ComputerVisionAPI(creds) { AzureRegion = CouputerVisionRegion };
 		}
 
-		public Task DetectAchievements(Memory memory) => ProcessImageFile(memory, GetAchievementsForImage);
+		public Task<bool> DetectAchievements(Memory memory) => ProcessImageFile(memory, GetAchievementsForImage);
 		public Task AnalyzeImage(Memory memory) => ProcessImageFile(memory, AnalyzeImageStream);
 
-		async Task ProcessImageFile(Memory memory, Func<Memory, Stream, Task> handler)
+		async Task<bool> ProcessImageFile(Memory memory, Func<Memory, Stream, Task> handler)
 		{
 			try
 			{
@@ -45,12 +45,15 @@ namespace ConferenceVision.Services
 				{
 					await handler(memory, s);
 				}
+				return true;
 			}
 			catch (Exception e)
 			{
 				Debug.WriteLine($"Exception in {nameof(VisionService)}.{nameof(ProcessImageFile)}: {e.Message}");
 				Debug.WriteLine(e.StackTrace);
 			}
+
+			return false;
 		}
 
 		async Task ProcessImageBuffer(byte[] imgBuffer, Memory memory, Func<Memory, Stream, Task> handler)
