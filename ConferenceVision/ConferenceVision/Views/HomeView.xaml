@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ConferenceVision.Views.HomeView"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:converters="clr-namespace:ConferenceVision.Converters"
+             xmlns:myeffects="clr-namespace:ConferenceVision.Effects"
+             xmlns:effects="clr-namespace:FormsCommunityToolkit.Effects;assembly=FormsCommunityToolkit.Effects"
+             xmlns:carousel="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+             ios:Page.UseSafeArea="false"
+             Title="">
+
+    <ContentPage.Resources>
+        <ResourceDictionary Source="../Styles/HomeResources.xaml"/>
+    </ContentPage.Resources>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="search" Clicked="Search_Clicked"/>
+    </ContentPage.ToolbarItems>
+  <AbsoluteLayout Padding="0,10">
+
+    <ListView x:Name="MediaList" 
+              AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+              AbsoluteLayout.LayoutFlags="SizeProportional"
+              SeparatorVisibility="None"
+              BackgroundColor="Transparent"
+              RowHeight="340"
+              HasUnevenRows="false"
+              CachingStrategy="RecycleElement"
+              ItemTapped="Handle_ItemTappedAsync"
+              myeffects:ContentInsetAdjustmentBehavior.ContentInset="0,100,0,0"
+              ItemsSource="{Binding Memories, Mode=OneWay}">
+            <ListView.Effects>
+                <myeffects:ContentInsetAdjustmentBehaviorEffect />
+            </ListView.Effects>
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell>
+            <StackLayout Spacing="0" Margin="0,0,0,10"> 
+                <ffimageloading:CachedImage
+                   WidthRequest="300"
+                    HeightRequest="300"
+                    RetryCount="0"
+                    Margin="0"
+                    Source="{Binding MediaPath, Converter={StaticResource ImageSourceConverter}}"     
+                    Aspect="AspectFill">
+                    <ffimageloading:CachedImage.LoadingPlaceholder>
+                        <OnPlatform x:TypeArguments="ImageSource">
+                            <On Platform="iOS, Android" Value="placeholder" />
+                            <On Platform="UWP, WinRT, WinPhone" Value="Assets/placeholder.png" />
+                        </OnPlatform>
+                    </ffimageloading:CachedImage.LoadingPlaceholder>
+                    <ffimageloading:CachedImage.ErrorPlaceholder>
+                        <OnPlatform x:TypeArguments="ImageSource">
+                            <On Platform="iOS, Android" Value="noimage" />
+                            <On Platform="UWP, WinRT, WinPhone" Value="Assets/noimage.png" />
+                        </OnPlatform>
+                    </ffimageloading:CachedImage.ErrorPlaceholder>
+                </ffimageloading:CachedImage>
+                <Image Source="cardShadow" Aspect="Fill" HeightRequest="20" HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+
+    <StackLayout
+        x:Name="EmptyView"
+        IsVisible="{Binding HasNoMemories}"
+        Opacity="1"
+        AbsoluteLayout.LayoutBounds="0.5, 0.5, AutoSize, AutoSize"
+        AbsoluteLayout.LayoutFlags="PositionProportional"
+        Margin="20">
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer 
+                    Tapped="AddPhoto_Clicked"
+                    NumberOfTapsRequired="1"/>
+            </StackLayout.GestureRecognizers> 
+            <Label Text="&#xEB9F;" 
+                   FontSize="164"
+                   Style="{StaticResource IconFont}"
+                   Margin="0,0,0,20"
+                   HorizontalTextAlignment="Center"
+                   />
+            
+        <Label HorizontalTextAlignment="Center">
+            <Label.FormattedText>
+              <FormattedString>
+                <Span Text="Take Your First Photo!"
+                      FontSize="32"
+                      ForegroundColor="White" FontAttributes="Bold"/>
+                <Span Text="&#x0a;This camera is special. As you look for your next subject, Computer Vision spins up intelligent AI power to identify things in frame that you should know about." />
+              </FormattedString>
+            </Label.FormattedText>
+        </Label>
+    </StackLayout>
+
+    <Button x:Name="AddPhotoButton"
+        Image="add_photo.png" 
+        AbsoluteLayout.LayoutFlags="PositionProportional"
+        AbsoluteLayout.LayoutBounds="0.5,0.98"
+        Style="{StaticResource NakedButton}"
+        Clicked="AddPhoto_Clicked" />
+
+    <FlexLayout
+        x:Name="SearchContent"
+        Margin="-10"
+        Opacity="0"
+        IsVisible="false"
+        Direction="Column" 
+        AlignContent="Center" 
+        JustifyContent="Center"
+        BackgroundColor="#CC000000" 
+        AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+        AbsoluteLayout.LayoutFlags="All">
+        <Label Text="Ready for Search? Implement it now." 
+               HorizontalTextAlignment="Center" 
+               Margin="20"/>
+        <Button Text="VIEW GUIDE" 
+                Margin="20,0"
+            Style="{StaticResource OutlineButton}"
+            Clicked="GoToSearchActivityAsync"/>
+    </FlexLayout>
+
+    <FlexLayout x:Name="SearchForm" 
+            Direction="Row" 
+            JustifyContent="SpaceBetween" 
+            HeightRequest="40"
+            AbsoluteLayout.LayoutBounds="0,0">
+            <FlexLayout.Margin>
+                <OnPlatform x:TypeArguments="Thickness" Default="0">
+                    <On Platform="iOS" Value="0,20,0,0"/>
+                </OnPlatform>
+            </FlexLayout.Margin>
+            <Button
+                FlexLayout.Order="0"
+                FlexLayout.Shrink="0"
+                Clicked="Search_Clicked"
+                Image="search"
+                Style="{StaticResource NakedButton}">
+                <Button.WidthRequest>
+                    <OnPlatform x:TypeArguments="x:Double" Default="-1">
+                        <On Platform="Android" Value="40"/>
+                    </OnPlatform>
+                </Button.WidthRequest>
+            </Button>
+            <Entry 
+                Placeholder="search by tag"
+                HeightRequest="40"
+                FlexLayout.Grow="1" 
+                FlexLayout.Order="1">
+                <Entry.Effects>
+                    <effects:EntryRemoveBorder />
+                    <effects:EntryRemoveLine />
+                </Entry.Effects>
+                <Entry.Margin>
+                    <OnPlatform x:TypeArguments="Thickness" Default="0">
+                        <On Platform="iOS" Value="10,0"/>
+                    </OnPlatform>
+                </Entry.Margin>
+            </Entry>
+            <Button Text="&#xE894;"
+                    FontSize="18"
+                    FlexLayout.Shrink="0"
+                    Style="{StaticResource IconFontButton}"
+                    Clicked="Close_Clicked"
+                    FlexLayout.Order="2">
+                <Button.WidthRequest>
+                    <OnPlatform x:TypeArguments="x:Double" Default="-1">
+                        <On Platform="Android" Value="40"/>
+                    </OnPlatform>
+                </Button.WidthRequest>
+            </Button>
+        </FlexLayout>
+    </AbsoluteLayout>
+</ContentPage>

@@ -1,0 +1,133 @@
+﻿using System;
+using System.Collections.ObjectModel;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.Azure.CognitiveServices.Vision.ComputerVision;
+using Microsoft.Azure.CognitiveServices.Vision.ComputerVision.Models;
+using ConferenceVision.Models;
+using ConferenceVision.ViewModels;
+using Plugin.ImageEdit;
+using Xam.Plugins.OnDeviceCustomVision;
+using Xamarin.Essentials;
+using Xamarin.Forms;
+
+namespace ConferenceVision.Services
+{
+	public class VisionService
+	{
+		const double PredictionThreshold = 0.75;
+		const string ComputerVisionKey = "47577899720d4568ba242f577db496a2";
+
+		static readonly Dictionary<string, Achievement> Achievements = new AchievementsViewModel().Achievements.ToDictionary(a => a.Name, a => a);
+		static readonly AzureRegions CouputerVisionRegion = AzureRegions.Westus2;
+
+		readonly IComputerVisionAPI visionAPI;
+
+		public VisionService()
+		{
+			var creds = new ApiKeyServiceClientCredentials(ComputerVisionKey);
+			visionAPI = new ComputerVisionAPI(creds) { AzureRegion = CouputerVisionRegion };
+		}
+
+		public Task DetectAchievements(Memory memory) => ProcessImageFile(memory, GetAchievementsForImage);
+		public Task AnalyzeImage(Memory memory) => ProcessImageFile(memory, AnalyzeImageStream);
+
+		async Task ProcessImageFile(Memory memory, Func<Memory, Stream, Task> handler)
+		{
+			try
+			{
+				var fileName = Path.Combine(DependencyService.Get<IMediaFolder>().Path, $"{memory.MediaPath}");
+
+				using (var s = new FileStream(fileName, FileMode.Open))
+				{
+					await handler(memory, s);
+				}
+			}
+			catch (Exception e)
+			{
+				Debug.WriteLine($"Exception in {nameof(VisionService)}.{nameof(ProcessImageFile)}: {e.Message}");
+				Debug.WriteLine(e.StackTrace);
+			}
+		}
+
+		async Task ProcessImageBuffer(byte[] imgBuffer, Memory memory, Func<Memory, Stream, Task> handler)
+		{
+			using (var s = new MemoryStream(imgBuffer))
+			{
+				await handler(memory, s);
+			}
+		}
+
+		async Task GetAchievementsForImage(Memory memory, Stream s)
+		{
+			var classifications = await CrossImageClassifier.Current.ClassifyImage(s);
+			var bestPrediction = classifications.OrderByDescending(c => c.Probability).First();
+
+			if (bestPrediction.Probability < PredictionThreshold) return;
+
+			if (Achievements.TryGetValue(bestPrediction.Tag, out var achievement))
+			{
+				memory.Achievements.Add(achievement);
+			}
+		}
+
+		async Task AnalyzeImageStream(Memory memory, Stream s)
+		{
+			try
+			{
+				if (Connectivity.NetworkAccess != NetworkAccess.Internet)
+				{
+					await Application.Current.MainPage.DisplayAlert("Not connected", "Please connect to the internet to analyse images", "OK");
+					return;
+				}
+
+				using (var image = await CrossImageEdit.Current.CreateImageAsync(s))
+				{
+					var smallerImage = image.Resize(1024);
+					var png = smallerImage.ToPng();
+
+					await Task.WhenAll(ProcessImageBuffer(png, memory, GetTagsForImage),
+									   ProcessImageBuffer(png, memory, GetNotesForImage));
+				}
+			}
+			catch (Exception e)
+			{
+				await Application.Current.MainPage.DisplayAlert("Oops!", "Something went wrong, check your internet connection and try again", "OK");
+
+				Debug.WriteLine($"Exception in {nameof(VisionService)}.{nameof(ProcessImageFile)}: {e.Message}");
+				Debug.WriteLine(e.StackTrace);
+			}
+		}
+
+		async Task GetTagsForImage(Memory memory, Stream i)
+		{
+			var tags = await visionAPI.TagImageInStreamAsync(i);
+			memory.Tags = new ObservableCollection<string>(tags.Tags.Select(t => t.Name));
+		}
+
+		async Task GetNotesForImage(Memory memory, Stream i)
+		{
+			var op = await visionAPI.RecognizeTextInStreamAsync(i);
+			var id = op.OperationLocation.Split('/').Last();
+
+			TextOperationResult t;
+			do
+			{
+				t = await visionAPI.GetTextOperationResultAsync(id);
+			}
+			while (t.Status == TextOperationStatusCodes.Running);
+
+			if (t.Status == TextOperationStatusCodes.Succeeded && t.RecognitionResult != null && t.RecognitionResult.Lines != null && t.RecognitionResult.Lines.Any())
+			{
+				memory.Notes = string.Join("\n", t.RecognitionResult.Lines.Select(l => l.Text));
+			}
+			else
+			{
+				memory.Notes = "";
+			}
+		}
+	}
+}

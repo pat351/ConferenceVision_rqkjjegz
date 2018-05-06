@@ -1,0 +1,542 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0BEB1358-CBC8-429F-BCE0-3E954125EB69}</ProjectGuid>
+    <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TemplateGuid>{c9e5eea5-ca05-42a1-839b-61506e0a37df}</TemplateGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>ConferenceVision.Droid</RootNamespace>
+    <AssemblyName>ConferenceVision.Android</AssemblyName>
+    <AndroidApplication>True</AndroidApplication>
+    <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
+    <AndroidResgenClass>Resource</AndroidResgenClass>
+    <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
+    <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
+    <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
+    <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
+    <TargetFrameworkVersion>v8.1</TargetFrameworkVersion>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidLinkMode>None</AndroidLinkMode>
+    <AndroidSupportedAbis />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidManagedSymbols>true</AndroidManagedSymbols>
+    <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+    <AndroidCreatePackagePerAbi>true</AndroidCreatePackagePerAbi>
+    <AotAssemblies>true</AotAssemblies>
+    <EnableLLVM>true</EnableLLVM>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Mono.Android" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Plugin.Permissions">
+      <Version>2.2.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xam.Plugins.Forms.ImageCircle">
+      <Version>3.0.0.1-beta</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.FFImageLoading.Forms">
+      <Version>2.4.0-pre-755</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Android.Support.Design" Version="25.*" />
+    <PackageReference Include="Xamarin.Android.Support.v7.AppCompat" Version="25.*" />
+    <PackageReference Include="Xamarin.Android.Support.v4" Version="25.*" />
+    <PackageReference Include="Xamarin.Android.Support.v7.CardView" Version="25.*" />
+    <PackageReference Include="Xamarin.Android.Support.v7.MediaRouter" Version="25.*" />
+    <PackageReference Include="Xamarin.Forms">
+      <Version>3.0.0.446417</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.AppCenter.Analytics">
+      <Version>1.5.0</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.AppCenter.Crashes">
+      <Version>1.5.0</Version>
+    </PackageReference>
+    <PackageReference Include="SkiaSharp">
+      <Version>1.60.0</Version>
+    </PackageReference>
+    <PackageReference Include="SkiaSharp.Views.Forms">
+      <Version>1.60.0</Version>
+    </PackageReference>
+    <PackageReference Include="SkiaSharp.Views">
+      <Version>1.60.0</Version>
+    </PackageReference>
+    <PackageReference Include="FormsCommunityToolkit.Effects">
+      <Version>1.0.0.110-beta</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Android.Support.v13">
+      <Version>25.4.0.2</Version>
+    </PackageReference>
+    <PackageReference Include="Xam.Plugins.OnDeviceCustomVision">
+      <Version>1.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="Xam.Forms.MarkdownView">
+      <Version>0.5.3-pre</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Azure.CognitiveServices.Vision.ComputerVision">
+      <Version>1.0.2-preview</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Plugin.ImageEdit">
+      <Version>0.1.0</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Essentials">
+      <Version>0.5.0-preview</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MainActivity.cs" />
+    <Compile Include="MainApplication.cs" />
+    <Compile Include="Renderers\CameraPreviewRenderer.cs" />
+    <Compile Include="Renderers\CustomMasterDetailPageRenderer.cs" />
+    <Compile Include="Resources\Resource.Designer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Renderers\CustomNavigationRenderer.cs" />
+    <Compile Include="Services\Share.cs" />
+    <Compile Include="SplashActivity.cs" />
+    <Compile Include="Camera2Basic\AutoFitTextureView.cs" />
+    <Compile Include="Camera2Basic\CompareSizesByArea.cs" />
+    <Compile Include="Camera2Basic\Listeners\Camera2BasicSurfaceTextureListener.cs" />
+    <Compile Include="Camera2Basic\Listeners\CameraCaptureListener.cs" />
+    <Compile Include="Camera2Basic\Listeners\CameraCaptureSessionCallback.cs" />
+    <Compile Include="Camera2Basic\Listeners\CameraCaptureStillPictureSessionCallback.cs" />
+    <Compile Include="Camera2Basic\Listeners\CameraStateListener.cs" />
+    <Compile Include="Camera2Basic\Listeners\ImageAvailableListener.cs" />
+    <Compile Include="Camera2Basic\ICamera2Basic.cs" />
+    <Compile Include="Camera2Basic\Camera2BasicState.cs" />
+    <Compile Include="Services\MediaFolder.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\model.pb" />
+    <None Include="Resources\AboutResources.txt" />
+    <None Include="Assets\AboutAssets.txt" />
+    <None Include="Properties\AndroidManifest.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\Tabbar.axml" />
+    <AndroidResource Include="Resources\layout\Toolbar.axml" />
+    <AndroidResource Include="Resources\values\styles.xml" />
+    <AndroidResource Include="Resources\values\colors.xml" />
+    <AndroidResource Include="Resources\mipmap-anydpi-v26\icon.xml" />
+    <AndroidResource Include="Resources\mipmap-anydpi-v26\icon_round.xml" />
+    <AndroidResource Include="Resources\drawable-nodpi\profile.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\bg_seattle.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\bg_shadow.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\heart.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icon_camera.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\noimage.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\twitter.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\add_photo.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\bg_seattle.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\bg_shadow.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\btn_take_photo.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\close.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\heart.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icon_camera.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\menu.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\noimage.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\search.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\twitter.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\bg_seattle.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\bg_shadow.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\heart.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\icon_camera.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\noimage.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\twitter.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\bg_seattle.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\bg_shadow.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\heart.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon_camera.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\noimage.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\twitter.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\bg_seattle.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\bg_shadow.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\heart.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_camera.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\noimage.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\twitter.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\back.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icon_out.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\back.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icon_out.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\back.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\icon_out.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\back.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon_out.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\back.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_out.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\photo_overlay.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\photo_overlay.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\photo_overlay.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\photo_overlay.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\photo_overlay.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\iconAppCenter.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\iconMono.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\iconMvvmCross.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\iconPrism.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\iconProgressTelerik.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\iconVSCode.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\iconVSIDE.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\iconVSMac.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\iconVSTS.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\iconXamarin.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\iconAppCenter.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\iconMono.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\iconMvvmCross.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\iconPrism.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\iconProgressTelerik.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\iconVSCode.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\iconVSIDE.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\iconVSMac.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\iconVSTS.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\iconXamarin.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\iconAppCenter.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\iconMono.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\iconMvvmCross.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\iconPrism.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\iconProgressTelerik.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\iconVSCode.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\iconVSIDE.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\iconVSMac.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\iconVSTS.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\iconXamarin.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\iconAppCenter.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\iconMono.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\iconMvvmCross.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\iconPrism.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\iconProgressTelerik.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\iconVSCode.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\iconVSIDE.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\iconVSMac.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\iconVSTS.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\iconXamarin.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\iconAppCenter.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\iconMono.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\iconMvvmCross.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\iconPrism.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\iconProgressTelerik.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\iconVSCode.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\iconVSIDE.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\iconVSMac.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\iconVSTS.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\iconXamarin.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\iconCocos2d.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\iconGithub.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\iconGorilla.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\iconGrapeCity.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\iconGrial.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\iconInfragistics.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\iconMonoGame.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\iconMvvmLight.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\iconSkia.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\iconSteema.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\iconUnity3d.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\iconUrho.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\iconUXDivers.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\iconWebAssembly.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\iconCocos2d.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\iconGithub.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\iconGorilla.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\iconGrapeCity.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\iconGrial.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\iconInfragistics.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\iconMonoGame.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\iconMvvmLight.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\iconSkia.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\iconSteema.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\iconUnity3d.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\iconUrho.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\iconUXDivers.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\iconWebAssembly.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\iconCocos2d.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\iconGithub.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\iconGorilla.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\iconGrapeCity.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\iconGrial.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\iconInfragistics.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\iconMonoGame.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\iconMvvmLight.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\iconSkia.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\iconSteema.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\iconUnity3d.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\iconUrho.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\iconUXDivers.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\iconWebAssembly.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\iconCocos2d.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\iconGithub.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\iconGorilla.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\iconGrapeCity.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\iconGrial.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\iconInfragistics.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\iconMonoGame.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\iconMvvmLight.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\iconSkia.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\iconSteema.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\iconUnity3d.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\iconUrho.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\iconUXDivers.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\iconWebAssembly.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\iconCocos2d.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\iconGithub.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\iconGorilla.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\iconGrapeCity.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\iconGrial.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\iconInfragistics.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\iconMonoGame.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\iconMvvmLight.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\iconSkia.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\iconSteema.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\iconUnity3d.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\iconUrho.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\iconUXDivers.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\iconWebAssembly.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\iconMfractor.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\iconMfractor.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\iconMfractor.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\iconMfractor.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\iconMfractor.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\iconGithubDark.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\iconGrapeCityDark.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\iconMonoDark.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\iconMvvmCrossDark.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\iconPrismDark.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\iconSkiaDark.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\iconUnity3dDark.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\iconXamarinDark.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\iconGithubDark.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\iconGrapeCityDark.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\iconMonoDark.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\iconMvvmCrossDark.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\iconPrismDark.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\iconSkiaDark.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\iconUnity3dDark.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\iconXamarinDark.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\iconGithubDark.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\iconGrapeCityDark.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\iconMonoDark.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\iconMvvmCrossDark.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\iconPrismDark.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\iconSkiaDark.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\iconUnity3dDark.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\iconXamarinDark.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\iconGithubDark.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\iconGrapeCityDark.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\iconMonoDark.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\iconMvvmCrossDark.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\iconPrismDark.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\iconSkiaDark.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\iconUnity3dDark.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\iconXamarinDark.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\iconGithubDark.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\iconGrapeCityDark.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\iconMonoDark.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\iconMvvmCrossDark.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\iconPrismDark.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\iconSkiaDark.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\iconUnity3dDark.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\iconXamarinDark.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\iconAzure.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\iconAzureFunctions.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\iconComponentOne.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\iconXamarinUniversity.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\iconAzure.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\iconAzureFunctions.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\iconComponentOne.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\iconXamarinUniversity.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\iconAzure.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\iconAzureFunctions.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\iconComponentOne.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\iconXamarinUniversity.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\iconAzure.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\iconAzureFunctions.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\iconComponentOne.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\iconXamarinUniversity.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\iconAzure.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\iconAzureFunctions.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\iconComponentOne.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\iconXamarinUniversity.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\iconReactiveUI.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\iconReactiveUI.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\iconReactiveUI.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\iconReactiveUI.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\iconReactiveUI.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\cardShadow.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\qrcode.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\cardShadow.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\qrcode.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\cardShadow.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\qrcode.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\cardShadow.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\qrcode.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\cardShadow.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\qrcode.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\iconMonkey.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\iconMonkey.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\iconMonkey.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\iconMonkey.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\iconMonkey.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\info.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\info.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\info.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\info.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\mipmap-hdpi\ic_background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ConferenceVision\ConferenceVision.csproj">
+      <Project>{719E5F64-812C-4277-A495-25845AB1B191}</Project>
+      <Name>ConferenceVision</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\add_photo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\btn_take_photo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\menu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xhdpi\close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xhdpi\menu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xhdpi\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xhdpi\add_photo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xhdpi\btn_take_photo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxhdpi\close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxhdpi\menu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxhdpi\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxhdpi\add_photo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxhdpi\btn_take_photo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\add_photo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\btn_take_photo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\menu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\splash.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\mipmap-hdpi\ic_foreground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\mipmap-mdpi\ic_background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\mipmap-mdpi\ic_foreground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\mipmap-xhdpi\ic_background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\mipmap-xhdpi\ic_foreground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\mipmap-xxhdpi\ic_background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\mipmap-xxhdpi\ic_foreground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_foreground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\FabMDL2.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-mdpi\delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xhdpi\delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxhdpi\delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\placeholder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxhdpi\placeholder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xhdpi\placeholder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-mdpi\placeholder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\placeholder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\labels.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
+</Project>

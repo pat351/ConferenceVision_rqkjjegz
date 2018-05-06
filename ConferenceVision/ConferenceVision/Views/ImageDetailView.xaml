@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+             ios:Page.UseSafeArea="false"
+             x:Name="ImageDetailView"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
+             xmlns:effects="clr-namespace:ConferenceVision.Effects"
+             xmlns:local="clr-namespace:ConferenceVision.Views.Renderers"
+             x:Class="ConferenceVision.Views.ImageDetailView">
+    <ContentPage.Resources>
+        <StyleSheet Source="../Styles/ImageDetailView.css"/>
+    </ContentPage.Resources>
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="delete.png" Clicked="Handle_DeleteClickedAsync" />
+    </ContentPage.ToolbarItems>
+    
+    <ContentPage.Content>
+        <ScrollView x:Name="MyScrollView">
+            <ScrollView.Effects>
+                <effects:ContentInsetAdjustmentBehaviorEffect />
+            </ScrollView.Effects>
+            <AbsoluteLayout BackgroundColor="White">
+                <ffimageloading:CachedImage
+                    AbsoluteLayout.LayoutBounds="0,0,1,340"
+                    AbsoluteLayout.LayoutFlags="WidthProportional"
+                    FadeAnimationEnabled="true"
+                    BackgroundColor="Black" RetryCount="0" 
+                    Source="{Binding ImageSource, Converter={StaticResource ImageSourceConverter}}"     
+                    Aspect="AspectFill">
+                    <ffimageloading:CachedImage.LoadingPlaceholder>
+                        <OnPlatform x:TypeArguments="ImageSource" Default="placeholder">
+                            <On Platform="UWP" Value="Assets/placeholder.png" />
+                        </OnPlatform>
+                    </ffimageloading:CachedImage.LoadingPlaceholder>
+                    <ffimageloading:CachedImage.ErrorPlaceholder>
+                        <OnPlatform x:TypeArguments="ImageSource" Default="noimage">
+                            <On Platform="UWP" Value="Assets/noimage.png" />
+                        </OnPlatform>
+                    </ffimageloading:CachedImage.ErrorPlaceholder>
+                </ffimageloading:CachedImage>
+                <Image Source="photo_overlay.png"
+                       AbsoluteLayout.LayoutBounds="0,0,1,292" 
+                       AbsoluteLayout.LayoutFlags="WidthProportional"
+                       Aspect="AspectFill"/>
+                <StackLayout AbsoluteLayout.LayoutBounds="0, 270, 1, 1" Spacing="0"
+                        AbsoluteLayout.LayoutFlags="SizeProportional">
+                    
+                    <skia:SKCanvasView 
+                        HeightRequest="70"
+                        PaintSurface="OnCanvasViewPaintSurface" />
+
+                    <StackLayout x:Name="ImageDetailsContainer" Spacing="15">
+                        <Label Text="Achievements" StyleClass="group-title" Margin="0,10,0,0"/>
+                        <Button x:Name="GetAchievementsButton"
+                                IsVisible="{Binding HasNoAchievements}"
+                                Style="{StaticResource OutlineButtonDark}"
+                                Text="Nothing? Let's check again."
+                                Command="{Binding GetAchievementsCommand}"/>
+                        
+                        <local:RepeaterView x:Name="AchievementsContainer" StyleClass="container" ItemsSource="{Binding Achievements}">
+                            <local:RepeaterView.ItemTemplate>
+                                <DataTemplate>
+                                    <Button class="achievement" 
+                                            Image="{Binding DarkIcon}" 
+                                            Command="{Binding Path=BindingContext.GoToUrlCommand, Source={x:Reference ImageDetailView}}"
+                                            CommandParameter="{Binding .}"/>
+
+                                </DataTemplate>
+                            </local:RepeaterView.ItemTemplate>
+                        </local:RepeaterView>
+                            
+                        <BoxView BackgroundColor="#1D1D26" HeightRequest="1" HorizontalOptions="FillAndExpand"/>
+
+                        <Label Text="Notes" FontSize="15" TextColor="#1D1D26"/>
+                        <Button x:Name="GetVisionResultsButton"
+                                IsVisible="{Binding HasNoVisionResults}"
+                                Style="{StaticResource OutlineButtonDark}"
+                                Text="Analyze Photo with Computer Vision AI"
+                                Command="{Binding GetVisionResultsCommand}"/>
+                        <ActivityIndicator x:Name="ActivitySpinner" IsVisible="{Binding IsProcessingVision}"
+                                           Color="{StaticResource callToActionColor}" 
+                                           IsRunning="{Binding IsProcessingVision}"
+                                           FlexLayout.AlignSelf="Center"/>
+
+                        <Label Text="{Binding VisionNotes}" FontSize="12" TextColor="#1D1D26" Opacity="0.5"/>
+                        <BoxView BackgroundColor="#1D1D26" HeightRequest="1" HorizontalOptions="FillAndExpand"/>
+
+                        <Label Text="Vision Tags" FontSize="15" TextColor="#1D1D26"/>
+                        <Label Text="{Binding VisionTags}" FontSize="12" TextColor="#1D1D26" Opacity="0.5"/>
+                        <BoxView BackgroundColor="#1D1D26" HeightRequest="1" HorizontalOptions="FillAndExpand"/>
+
+                        
+                    </StackLayout>
+                </StackLayout>
+                <Button 
+                    x:Name="twitter"
+                    Image="twitter.png"
+                    BackgroundColor="{StaticResource callToActionColor}"
+                    CornerRadius="25"
+                    AbsoluteLayout.LayoutBounds="0.9, 255, AutoSize, AutoSize"
+                    AbsoluteLayout.LayoutFlags="XProportional"
+                    Clicked="Handle_ShareClicked" />
+            </AbsoluteLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

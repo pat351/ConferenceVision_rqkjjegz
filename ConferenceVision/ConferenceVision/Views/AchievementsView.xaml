@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ConferenceVision.Views.Renderers"
+             xmlns:effects="clr-namespace:ConferenceVision.Effects"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+             ios:Page.UseSafeArea="True"
+             Title="Achievements"
+             x:Class="ConferenceVision.Views.AchievementsView">
+    <ContentPage.Resources>
+        <StyleSheet Source="../Styles/AchievementsView.css"/>
+    </ContentPage.Resources>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="info" Clicked="Handle_InfoClicked"/>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        
+            <ScrollView 
+                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                AbsoluteLayout.LayoutFlags="SizeProportional">
+                <ScrollView.Margin>
+                    <OnPlatform x:TypeArguments="Thickness" Default="15,0">
+                        <On Platform="Android" Value="15,50,15,0"/>
+                    </OnPlatform>
+                </ScrollView.Margin>
+                <local:RepeaterView x:Name="AchievementsContainer" StyleClass="container" ItemsSource="{Binding Achievements}">
+                    <local:RepeaterView.ItemTemplate>
+                        <DataTemplate>
+                            <local:AchievementView class="item" />
+                        </DataTemplate>
+                    </local:RepeaterView.ItemTemplate>
+                </local:RepeaterView>
+            </ScrollView>
+        
+    </ContentPage.Content>
+</ContentPage>

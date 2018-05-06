@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <Style TargetType="ListView">
+        <Setter Property="VisualStateManager.VisualStateGroups">
+            <VisualStateGroupList x:Name="CommonStates">
+                <VisualStateGroup>
+                    <VisualState x:Name="Default">
+                        <VisualState.Setters>
+                            <Setter Property="AbsoluteLayout.LayoutBounds" Value="0,0,1,1"/>
+                            <Setter Property="AbsoluteLayout.LayoutFlags" Value="SizeProportional"/>
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState x:Name="Searching">
+                        <VisualState.Setters>
+                            <Setter Property="AbsoluteLayout.LayoutBounds" Value="0,80,1,1"/>
+                            <Setter Property="AbsoluteLayout.LayoutFlags" Value="SizeProportional"/>
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateGroupList>
+        </Setter>
+    </Style>
+</ResourceDictionary>

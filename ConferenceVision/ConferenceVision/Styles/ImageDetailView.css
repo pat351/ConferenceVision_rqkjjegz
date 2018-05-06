@@ -1,0 +1,28 @@
+﻿.group-title {
+    font-size: 15;
+    color: #1D1D26;
+}
+
+#ImageDetailsContainer {
+    background-color: white;
+    padding: 15,0;
+}
+
+#AchievementsContainer {
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 15,5,15,0;
+    align-content: flex-start;
+    justify-content: flex-start;
+}
+
+.achievement {
+    margin: 0,0,5,5;
+    height: 30;
+    width: 30;
+}
+
+#twitter {
+    width: 50;
+    height: 50;
+}

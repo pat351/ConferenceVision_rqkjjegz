@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+             ios:Page.UseSafeArea="false"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
+             xmlns:effects="clr-namespace:ConferenceVision.Effects"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             BackgroundColor="Black" BackgroundImage=""
+             x:Class="ConferenceVision.Views.UserProfileView">
+    <!-- TODO Add StyleSheet -->
+    <ContentPage.Resources>
+        <StyleSheet Source="../Styles/UserProfileView.css"/>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <ScrollView x:Name="MyScrollView">
+            <ScrollView.Effects>
+                <effects:ContentInsetAdjustmentBehaviorEffect />
+            </ScrollView.Effects>
+            <AbsoluteLayout class="profile-content">
+                <!-- TODO Header Image -->
+                
+                
+                <Image Source="photo_overlay"
+                       AbsoluteLayout.LayoutBounds="0,0,1,292"
+                       AbsoluteLayout.LayoutFlags="WidthProportional"
+                       Aspect="AspectFill"/>
+
+                <StackLayout 
+                    Orientation="Vertical" 
+                    HorizontalOptions="Center"
+                    AbsoluteLayout.LayoutBounds="0,80,1,160"
+                    AbsoluteLayout.LayoutFlags="WidthProportional">
+                    
+                    <controls:CircleImage Source="profile" WidthRequest="80" HeightRequest="80" Aspect="AspectFill" />
+                    <Label Text="David Ortinau" TextColor="White" FontSize="28" HorizontalTextAlignment="Center"/>
+                    <Label Text="Mobile Developer" TextColor="#999999" FontSize="18" HorizontalTextAlignment="Center"/>
+                </StackLayout>
+
+
+                <StackLayout AbsoluteLayout.LayoutBounds="0, 270, 1, 1"
+                        AbsoluteLayout.LayoutFlags="SizeProportional">
+                    
+                    <!-- This is the white slice overlaying the header image -->
+                    <skia:SKCanvasView 
+                        HeightRequest="70"
+                        PaintSurface="OnCanvasViewPaintSurface" />
+                    
+                    <FlexLayout x:Name="FlexContainer">
+                        <!-- TODO Update Bio -->
+                        <Label Text="Bio" 
+                               HeightRequest="20" 
+                         />
+                        <BoxView 
+                            Margin="0,5"
+                            BackgroundColor="#1D1D26" HeightRequest="1" HorizontalOptions="FillAndExpand"/>
+
+                        <Label Text="What would you like people to know about you?" 
+                               FontSize="12" 
+                               TextColor="#1D1D26"
+                               />
+
+                        <!-- Grid of Photos - for placement only -->
+                        <Image BackgroundColor="DarkBlue" />
+                        <Image BackgroundColor="DarkBlue" />
+                        <Image BackgroundColor="DarkBlue" />
+                        <Image BackgroundColor="DarkBlue" />
+                        <Image BackgroundColor="DarkBlue" />
+                        <Image BackgroundColor="DarkBlue" />
+                        <Image BackgroundColor="DarkBlue" />
+                        <Image BackgroundColor="DarkBlue" />
+                        <Image BackgroundColor="DarkBlue" />
+                        <Image BackgroundColor="DarkBlue" />
+                        
+                    </FlexLayout>
+
+                </StackLayout>
+
+                <!-- REMOVE ME -->
+                <FlexLayout
+                    Margin="-10"
+                    Direction="Column" 
+                    AlignContent="Center" 
+                    JustifyContent="Center"
+                    BackgroundColor="#CC000000" 
+                    AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                    AbsoluteLayout.LayoutFlags="All">
+                    <Label Text="Yikes, this could look so much better! Visit the Xamarin booth to personlize it in just 5 minutes." 
+                           HorizontalTextAlignment="Center" 
+                           Margin="20"/>
+                    <Button Text="WHERE IS XAMARIN?" 
+                            Margin="20,0"
+                            Style="{StaticResource OutlineButton}"
+                            Clicked="GoToXamarinBooth"/>
+                </FlexLayout>
+                <!-- / REMOVE ME -->
+            </AbsoluteLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

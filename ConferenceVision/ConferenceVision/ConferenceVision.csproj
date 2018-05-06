@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Plugin.Permissions" Version="2.2.1" />
+        <PackageReference Include="Xam.Plugins.Forms.ImageCircle" Version="3.0.0.1-beta" />
+        <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.0-pre-755" />
+        <PackageReference Include="Xamarin.Forms" Version="3.0.0.446417" />
+        <PackageReference Include="Microsoft.AppCenter.Crashes" Version="1.5.0" />
+        <PackageReference Include="Microsoft.AppCenter.Analytics" Version="1.5.0" />
+        <PackageReference Include="SkiaSharp.Views.Forms" Version="1.60.0" />
+        <PackageReference Include="SkiaSharp.Views" Version="1.60.0" />
+        <PackageReference Include="SkiaSharp" Version="1.60.0" />
+        <PackageReference Include="FormsCommunityToolkit.Effects" Version="1.0.0.110-beta" />
+        <PackageReference Include="Xamarin.LiveReload" Version="0.2.195" />
+        <PackageReference Include="Xam.Forms.MarkdownView" Version="0.5.3-pre" />
+        <PackageReference Include="Xam.Plugins.OnDeviceCustomVision" Version="1.0.0" />
+        <PackageReference Include="Microsoft.Azure.CognitiveServices.Vision.ComputerVision" Version="1.0.2-preview" />
+        <None Remove="Resources\Activity_CarouselView.md" />
+        <None Remove="Resources\Activity_ImplementSearch.md" />
+        <None Remove="Resources\Activity_StartHere.md" />
+        <None Remove="Resources\Images\LiveReloadBar.png" />
+        <None Remove="Resources\Images\Profile01.png" />
+        <None Remove="Resources\Images\ProfileAfterStylesheet.png" />
+        <None Remove="Resources\Images\qrcode.png" />
+        <None Remove="Resources\XamarinBooth.md" />
+        <EmbeddedResource Include="Resources\Activity_CarouselView.md" />
+        <EmbeddedResource Include="Resources\Activity_ImplementSearch.md" />
+        <EmbeddedResource Include="Resources\Activity_StartHere.md" />
+        <EmbeddedResource Include="Resources\Images\LiveReloadBar.png" />
+        <EmbeddedResource Include="Resources\Images\Profile01.png" />
+        <EmbeddedResource Include="Resources\Images\ProfileAfterStylesheet.png" />
+        <EmbeddedResource Include="Resources\Images\qrcode.png" />
+        <EmbeddedResource Include="Resources\XamarinBooth.md" />
+        <PackageReference Include="Xamarin.Plugin.ImageEdit" Version="0.1.0" />
+        <None Remove="Resources\Activity_CarouselView %28copy%29.md" />
+        <EmbeddedResource Include="Resources\HowToGainAchievements.md" />
+        <PackageReference Include="Xamarin.Essentials" Version="0.5.0-preview" />
+    </ItemGroup>
+</Project>

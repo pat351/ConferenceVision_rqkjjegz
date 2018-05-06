@@ -1,0 +1,22 @@
+﻿.profile-content {
+    background-color: white;
+}
+
+.bio-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 15,10;
+    background-color: white;
+}
+
+.group-title {
+    font-size: 15;
+    color: #1D1D26;
+}
+
+.bio-container > image {
+    flex-basis: 45%;
+    height: 80;
+    margin: 0,10;
+}

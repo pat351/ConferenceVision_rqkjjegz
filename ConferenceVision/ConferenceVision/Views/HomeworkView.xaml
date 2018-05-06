@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:md="clr-namespace:Xam.Forms.Markdown;assembly=Xam.Forms.MarkdownView"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+             ios:Page.UseSafeArea="true"
+             BackgroundColor="Black"
+             BackgroundImage=""
+             x:Class="ConferenceVision.Views.HomeworkView">
+    <ContentPage.Content>
+        <FlexLayout
+                JustifyContent="SpaceBetween" 
+                Direction="Column">
+            <FlexLayout.Margin>
+                <OnPlatform x:TypeArguments="Thickness" Default="0">
+                    <On Platform="iOS" Value="0,10,0,0"/>
+                </OnPlatform>
+            </FlexLayout.Margin>
+
+            <Button
+                    FlexLayout.AlignSelf="Start"
+                    FlexLayout.Shrink="0" 
+                    Text="&#xE894;"
+                    FontSize="18"
+                    WidthRequest="40"
+                    HeightRequest="40"
+                    Style="{StaticResource IconFontButton}"
+                    Clicked="OnCloseAsync">
+            </Button>
+            
+            <ScrollView FlexLayout.Grow="1">
+                <md:MarkdownView BackgroundColor="Transparent" Markdown="{Binding MarkdownContent}" x:Name="MDView" />
+            </ScrollView>
+        </FlexLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlexLayout
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="ConferenceVision.Views.Renderers.HyperlinkRowView"
+    Direction="Row"
+    Wrap="Wrap"
+    >
+    <Label Text="{Binding Title}" 
+        VerticalTextAlignment="Center"
+           FontSize="12" FlexLayout.Basis="89%" HorizontalTextAlignment="Start" HeightRequest="30" />
+    <Label Text="{Binding Icon}" 
+           VerticalTextAlignment="Center"
+           HorizontalTextAlignment="Center"
+           Style="{StaticResource IconFont}" FontSize="16" 
+           FlexLayout.Basis="10%"  />
+    <BoxView HeightRequest="1" FlexLayout.Basis="100%" BackgroundColor="#FFFFFF" Opacity="0.1" Margin="0,0,0,0"/>
+
+</FlexLayout>
