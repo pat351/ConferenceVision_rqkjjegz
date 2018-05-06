@@ -122,19 +122,24 @@ namespace ConferenceVision.ViewModels
 				CreatedAt = DateTime.Now
 			};
 
-			await DependencyService.Get<VisionService>().DetectAchievements(m);
+			if (await DependencyService.Get<VisionService>().DetectAchievements(m))
+			{
+				App.DataStore.Memories.Insert(0, m);
 
-			App.DataStore.Memories.Insert(0, m);
+				DependencyService.Get<DataStoreService>().Save(App.DataStore);
 
-			DependencyService.Get<DataStoreService>().Save(App.DataStore);
+				LastMemory = m;
 
-			LastMemory = m;
+				SetFilename();
 
-			SetFilename();
-
-			OnPropertyChanged(nameof(ThumbnailImagePath));
-			OnPropertyChanged(nameof(HasLastMemory));
-			OnPropertyChanged(nameof(HasAchievement));
+				OnPropertyChanged(nameof(ThumbnailImagePath));
+				OnPropertyChanged(nameof(HasLastMemory));
+				OnPropertyChanged(nameof(HasAchievement));
+			}
+			else
+			{
+				await App.Current.MainPage.DisplayAlert("Error", "Failed to Save Image", "Cancel");
+			}
 		}
 
 		private void CreateFakeMemory()

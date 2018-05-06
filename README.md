@@ -11,9 +11,12 @@ Conference Vision is a prototype reference app showcasing:
 
 Use your camera during a conference to capture your experience. Let Vision do the heavy lifting of identifying known products and scan your images to text for easier searching.
 
+![faceup](https://github.com/Microsoft/ConferenceVision/blob/master/Design/Screenshots/FaceUp.png?raw=true)
 
 ## Download the App
+
 Android: https://aka.ms/androidmovai
+
 iOS: https://aka.ms/iosmovai
 
 # Contributing
