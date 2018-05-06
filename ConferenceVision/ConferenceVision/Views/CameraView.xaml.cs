@@ -66,6 +66,29 @@ namespace ConferenceVision.Views
 			}
 		}
 
+
+		public void StopCamera()
+		{
+			Camera.StopRecording?.Invoke();
+		}
+		protected override void OnDisappearing()
+		{
+			MessagingCenter.Unsubscribe<App>(this, "OnSleep");
+
+			StopCamera();
+			base.OnDisappearing();
+		}
+
+		protected override void OnAppearing()
+		{
+			base.OnAppearing();
+			MessagingCenter.Subscribe<App>(this, "OnSleep", async (app) =>
+			{
+				StopCamera();
+				await Navigation.PopModalAsync(false);
+			});
+		}
+
 		void OnCaptureTapped(object sender, EventArgs args)
 		{
 			Camera.StartRecording();
@@ -73,13 +96,13 @@ namespace ConferenceVision.Views
 
 		async void OnCloseAsync(object sender, EventArgs e)
 		{
-			Camera.StopRecording?.Invoke();
+			StopCamera();
 			await Navigation.PopModalAsync(true);
 		}
 
 		async void NavToDetailAsync(object sender, System.EventArgs e)
 		{
-			Camera.StopRecording?.Invoke();
+			StopCamera();
 			MessagingCenter.Send<CameraView, Memory>(this, "GoToImage", vm.LastMemory);
 			await Navigation.PopModalAsync(true);
 		}
