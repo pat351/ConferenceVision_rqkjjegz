@@ -57,7 +57,8 @@ namespace ConferenceVision
 
 		protected override void OnSleep()
 		{
-			// Handle when your app sleeps
+			MessagingCenter.Send<App>(this, nameof(OnSleep));
+
 		}
 
 		protected override void OnResume()
