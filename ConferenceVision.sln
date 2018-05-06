@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConferenceVision.Android", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConferenceVision.iOS", "ConferenceVision\ConferenceVision.iOS\ConferenceVision.iOS.csproj", "{EA123FAD-2B41-4785-B223-45BAEB0B326F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConferenceVision.UWP", "ConferenceVision\ConferenceVision.UWP\ConferenceVision.UWP.csproj", "{788CE141-579B-4AFD-8D55-3077BED84A65}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5042379F-FD02-48DF-9144-1A06461F9086}"
 	ProjectSection(SolutionItems) = preProject
 		NuGet.config = NuGet.config
