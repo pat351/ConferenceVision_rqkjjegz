@@ -127,6 +127,7 @@ namespace ConferenceVision.Droid.Renderers
 			if (e.NewElement != null)
 			{
 				e.NewElement.StartRecording = (() => { TakePicture(); });
+				e.NewElement.StopRecording = (() => { CloseCamera(); });
 
 				if (Control == null)
 				{
@@ -406,14 +407,32 @@ namespace ConferenceVision.Droid.Renderers
 		// Closes the current {@link CameraDevice}.
 		private void CloseCamera()
 		{
+			if (mCaptureSession == null)
+				return;
+
 			try
 			{
 				mCameraOpenCloseLock.Acquire();
 				if (null != mCaptureSession)
 				{
+					try
+					{
+						mCaptureSession.StopRepeating();
+						mCaptureSession.AbortCaptures();
+					}
+					catch (CameraAccessException e)
+					{
+						e.PrintStackTrace();
+					}
+					catch (IllegalStateException e)
+					{
+						e.PrintStackTrace();
+					}
+
 					mCaptureSession.Close();
 					mCaptureSession = null;
 				}
+
 				if (null != mCameraDevice)
 				{
 					mCameraDevice.Close();
@@ -435,6 +454,23 @@ namespace ConferenceVision.Droid.Renderers
 			}
 		}
 
+		protected override void Dispose(bool disposing)
+		{
+			if (disposing)
+			{
+				CloseCamera();
+				StopBackgroundThread();
+
+				if (Element != null)
+				{
+					Element.StartRecording = null;
+					Element.StopRecording = null;
+				}
+			}
+
+			base.Dispose(disposing);
+		}
+
 		// Starts a background thread and its {@link Handler}.
 		private void StartBackgroundThread()
 		{
@@ -446,6 +482,9 @@ namespace ConferenceVision.Droid.Renderers
 		// Stops the background thread and its {@link Handler}.
 		private void StopBackgroundThread()
 		{
+			if (mBackgroundThread == null)
+				return;
+
 			mBackgroundThread.QuitSafely();
 			try
 			{

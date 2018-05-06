@@ -73,11 +73,13 @@ namespace ConferenceVision.Views
 
 		async void OnCloseAsync(object sender, EventArgs e)
 		{
+			Camera.StopRecording?.Invoke();
 			await Navigation.PopModalAsync(true);
 		}
 
 		async void NavToDetailAsync(object sender, System.EventArgs e)
 		{
+			Camera.StopRecording?.Invoke();
 			MessagingCenter.Send<CameraView, Memory>(this, "GoToImage", vm.LastMemory);
 			await Navigation.PopModalAsync(true);
 		}
