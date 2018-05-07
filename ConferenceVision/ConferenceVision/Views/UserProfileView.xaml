@@ -10,9 +10,9 @@
              BackgroundColor="Black" BackgroundImage=""
              x:Class="ConferenceVision.Views.UserProfileView">
     <!-- TODO Add StyleSheet -->
-    <ContentPage.Resources>
+    <!--<ContentPage.Resources>
         <StyleSheet Source="../Styles/UserProfileView.css"/>
-    </ContentPage.Resources>
+    </ContentPage.Resources>-->
     
     <ContentPage.Content>
         <ScrollView x:Name="MyScrollView">
