@@ -51,7 +51,7 @@ namespace ConferenceVision.Views
 		{
 			var share = DependencyService.Get<IShare>();
 			share.Show("Share",
-					   "Check out this photo I took at #build2018 with the #XamarinForms + #vision_api app I made. Get the app and code: https://aka.ms/cv-app",
+					   "Check out this photo I took at #MSBuild with the #XamarinForms + #vision_api app I made. Get the app and code: https://aka.ms/cv-app",
 					   System.IO.Path.Combine(
 							DependencyService.Get<IMediaFolder>().Path,
 							vm.ImageSource)

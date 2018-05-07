@@ -1,4 +1,5 @@
 AppCenter
+Azure Functions
 GitHub
 GrapeCity
 Infragistics
