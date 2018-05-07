@@ -412,6 +412,11 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\icon_round.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\icon.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\icon_round.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\iconSyncfusion.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\iconSyncfusion.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\iconSyncfusion.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\iconSyncfusion.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\iconSyncfusion.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\mipmap-hdpi\ic_background.png" />

@@ -117,6 +117,11 @@ namespace ConferenceVision.ViewModels
 				Url = "https://www.grapecity.com/en/componentone-xamarin"
 			},
 			new Achievement{
+				Name = "Syncfusion",
+				Icon = "iconSyncfusion",
+				Url = "https://www.syncfusion.com/"
+			},
+			new Achievement{
 				Name = "Steema",
 				Icon = "iconSteema",
 				Url = "https://www.steema.com/product/forms"

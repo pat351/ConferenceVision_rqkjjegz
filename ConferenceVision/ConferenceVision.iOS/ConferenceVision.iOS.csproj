@@ -125,6 +125,9 @@
     <BundleResource Include="Resources\info%403x.png" />
     <BundleResource Include="Resources\info%402x.png" />
     <BundleResource Include="Resources\info.png" />
+    <BundleResource Include="Resources\iconSyncfusion.png" />
+    <BundleResource Include="Resources\iconSyncfusion%402x.png" />
+    <BundleResource Include="Resources\iconSyncfusion%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
