@@ -96,7 +96,7 @@ namespace ConferenceVision.ViewModels
 
 		async void HandleVision(object obj)
 		{
-			if (DateTime.Today > DateTime.Parse("5/13/2018"))
+			if (DateTime.Today > new DateTime(2018, 5, 13))
 			{
 				var result = await App.Current.MainPage.DisplayAlert("Vision Key Expired", "Thanks for using the app! To continue using the Vision API, please visit the website and signup for your free trial key.", "Go Now", "Maybe Later");
 				if (result == true)
