@@ -1,13 +1,11 @@
 ﻿using ConferenceVision.Models;
 using ConferenceVision.Services;
 using ConferenceVision.Views;
-using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
-using Microsoft.AppCenter.Distribute;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace ConferenceVision
@@ -53,7 +51,7 @@ namespace ConferenceVision
 		protected override void OnStart()
 		{
 			// Handle when your app starts
-			AppCenter.Start("ios=14cc1c7a-ae7d-4545-b1bb-e7d2a7d5bafc;" + "uwp=068b85e2-6232-46b8-8a1b-0158efc65277;" + "android=36de2c1e-c507-4016-9df2-04c4b1e303de", typeof(Analytics), typeof(Crashes), typeof(Distribute));
+			AppCenter.Start("ios=14cc1c7a-ae7d-4545-b1bb-e7d2a7d5bafc;" + "uwp=068b85e2-6232-46b8-8a1b-0158efc65277;" + "android=36de2c1e-c507-4016-9df2-04c4b1e303de", typeof(Analytics), typeof(Crashes));
 		}
 
 		protected override void OnSleep()
