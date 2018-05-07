@@ -1,3 +1,4 @@
+<img src="https://movai.azurewebsites.net/images/ConfrenceVision.png"/>
 
 # Conference Vision App
 
@@ -15,8 +16,10 @@ Use your camera during a conference to capture your experience. Let Vision do th
 
 ## Download the App
 
+[![Build status](https://build.appcenter.ms/v0.1/apps/ef1ffea6-967d-4848-8ae5-602ddb51bdc5/branches/master/badge)](https://appcenter.ms)
 Android: https://aka.ms/androidmovai
 
+[![Build status](https://build.appcenter.ms/v0.1/apps/d1cdeb61-0b51-44cc-bb5f-4928a010a890/branches/master/badge)](https://appcenter.ms)
 iOS: https://aka.ms/iosmovai
 
 # Contributing
