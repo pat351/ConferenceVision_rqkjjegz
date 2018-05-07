@@ -8,7 +8,7 @@ using Android.Views;
 namespace ConferenceVision.Droid
 {
 	[Activity(
-		Label = "ConferenceVision",
+		Label = "Vision",
 		Theme = "@style/SplashTheme",
 		MainLauncher = true,
 		NoHistory = true,

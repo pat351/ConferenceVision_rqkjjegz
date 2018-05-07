@@ -41,7 +41,7 @@ namespace ConferenceVision.Droid.Services
 			var intent = new Intent(Intent.ActionSend);
 			intent.SetType(contentType);
 			intent.PutExtra(Intent.ExtraStream, uri);
-			intent.PutExtra(Intent.ExtraText, string.Empty);
+			intent.PutExtra(Intent.ExtraText, message ?? string.Empty);
 			intent.PutExtra(Intent.ExtraSubject, message ?? string.Empty);
 
 			var chooserIntent = Intent.CreateChooser(intent, title ?? string.Empty);
