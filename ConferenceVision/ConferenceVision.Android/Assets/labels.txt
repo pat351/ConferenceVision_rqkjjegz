@@ -4,6 +4,7 @@ GitHub
 GrapeCity
 Infragistics
 Monkey
+Syncfusion
 Telerik
 Unity3D
 VS Code
