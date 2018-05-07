@@ -90,6 +90,15 @@ namespace ConferenceVision.ViewModels
 		{
 			await DependencyService.Get<VisionService>().DetectAchievements(memory);
 
+			if (HasNoAchievements)
+			{
+				await App.Current.MainPage.DisplayAlert(
+					"No Achievement? No way!",
+					"We don't see any achievements here, but we could be wrong. Custom Vision gets better and better with training. Email your photo and the achievement it should have gained to david.ortinau@microsoft.com. New app builds will be shipped throughout Microsoft Build 2018 with updated models.",
+					"Okay"
+				);
+			}
+
 			OnPropertyChanged(nameof(Achievements));
 			OnPropertyChanged(nameof(HasNoAchievements));
 		}
@@ -101,7 +110,7 @@ namespace ConferenceVision.ViewModels
 				var result = await App.Current.MainPage.DisplayAlert("Vision Key Expired", "Thanks for using the app! To continue using the Vision API, please visit the website and signup for your free trial key.", "Go Now", "Maybe Later");
 				if (result == true)
 				{
-					await Xamarin.Essentials.Browser.OpenAsync("https://azure.microsoft.com/en-us/services/cognitive-services/computer-vision/");
+					await Xamarin.Essentials.Browser.OpenAsync("https://aka.ms/xamarin-azure");
 				}
 
 				return;
