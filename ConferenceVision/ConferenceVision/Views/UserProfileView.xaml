@@ -9,7 +9,7 @@
              xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
              BackgroundColor="Black" BackgroundImage=""
              x:Class="ConferenceVision.Views.UserProfileView">
-    <!-- TODO Add StyleSheet -->
+    <!-- TODO Uncomment StyleSheet -->
     <!--<ContentPage.Resources>
         <StyleSheet Source="../Styles/UserProfileView.css"/>
     </ContentPage.Resources>-->
