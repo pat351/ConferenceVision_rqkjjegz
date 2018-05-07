@@ -69,12 +69,27 @@ namespace ConferenceVision.Services
 			var classifications = await CrossImageClassifier.Current.ClassifyImage(s);
 			var bestPrediction = classifications.OrderByDescending(c => c.Probability).First();
 
-			if (bestPrediction.Probability < PredictionThreshold) return;
+			if (bestPrediction.Probability < PredictionThreshold)
+			{
+				// TODO when Xamarin.Essentials adds attachments, we should add this.
+				//var result = await App.Current.MainPage.DisplayAlert("No Achievements, No Way!", "We analyzed the photo, but it doesn't look like anything to us. Beg to differ? Email us the photo.", "Okay", "Not Now");
+				//if (result == true)
+				//{
+				//	var msg = new EmailMessage();
+				//	msg.To = new List<string> { "david.ortinau@microsoft.com" };
+				//	msg.Body = "Attach your photo and tell us what tags (achievements) you think should be here. We'll re-train the Vision model and deploy a new build of the app via AppCenter.";
+				//	msg.Subject = "ConferenceVision Photo for Training Set";
+				//	await Email.ComposeAsync(msg);
+
+				//}
+				return;
+			}
 
 			if (Achievements.TryGetValue(bestPrediction.Tag, out var achievement))
 			{
 				memory.Achievements.Add(achievement);
 			}
+
 		}
 
 		async Task AnalyzeImageStream(Memory memory, Stream s)
