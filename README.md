@@ -22,6 +22,10 @@ Android: https://aka.ms/androidmovai
 [![Build status](https://build.appcenter.ms/v0.1/apps/d1cdeb61-0b51-44cc-bb5f-4928a010a890/branches/master/badge)](https://appcenter.ms)
 iOS: https://aka.ms/iosmovai
 
+# Legal
+
+If you use any of the branding images in this repository, you must follow the branding guidelines set forth by the respective owner(s).
+
 # Contributing
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a
