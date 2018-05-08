@@ -57,7 +57,7 @@ Just take the name of the image ignoring the path, suffixes, and file extension.
 
 Good job!
 
-## Step 3: Conent and Style
+## Step 3: Content and Style
 
 The bio is looking a little thin, why not add some details about yourself. Locate the `<!-- TODO Update Bio -->` and add a few sentences about yourself.
 

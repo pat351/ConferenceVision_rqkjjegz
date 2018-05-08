@@ -415,6 +415,11 @@
     <AndroidResource Include="Resources\drawable-xhdpi\iconSyncfusion.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\iconSyncfusion.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\iconSyncfusion.png" />
+    <AndroidResource Include="Resources\drawable-nodpi\bg_cube.png" />
+    <AndroidResource Include="Resources\drawable-nodpi\bg_junkbot.png" />
+    <AndroidResource Include="Resources\drawable-nodpi\bg_surface_beach.png" />
+    <AndroidResource Include="Resources\drawable-nodpi\bg_surface_desktop.png" />
+    <AndroidResource Include="Resources\drawable-nodpi\bg_surface_studio.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ConferenceVision\ConferenceVision.csproj">

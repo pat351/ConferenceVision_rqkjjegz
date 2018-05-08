@@ -27,11 +27,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConferenceVision.UITests", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Photos", "Photos", "{161A1E59-EA9D-4182-8DE1-DCC299F2371A}"
 	ProjectSection(SolutionItems) = preProject
-		Design\Backgrounds\bg_cube.png = Design\Backgrounds\bg_cube.png
-		Design\Backgrounds\bg_surface_studio.png = Design\Backgrounds\bg_surface_studio.png
-		Design\Backgrounds\bg_junkbot.png = Design\Backgrounds\bg_junkbot.png
-		Design\Backgrounds\bg_surface_desktop.png = Design\Backgrounds\bg_surface_desktop.png
-		Design\Backgrounds\bg_surface_beach.png = Design\Backgrounds\bg_surface_beach.png
+		bg_cube.png = bg_cube.png
+		bg_junkbot.png = bg_junkbot.png
+		bg_surface_beach.png = bg_surface_beach.png
+		bg_surface_desktop.png = bg_surface_desktop.png
+		bg_surface_studio.png = bg_surface_studio.png
 	EndProjectSection
 EndProject
 Global

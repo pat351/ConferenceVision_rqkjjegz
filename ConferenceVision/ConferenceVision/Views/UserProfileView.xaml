@@ -10,9 +10,9 @@
              BackgroundColor="Black" BackgroundImage=""
              x:Class="ConferenceVision.Views.UserProfileView">
     <!-- TODO Uncomment StyleSheet -->
-    <!--<ContentPage.Resources>
+    <ContentPage.Resources>
         <StyleSheet Source="../Styles/UserProfileView.css"/>
-    </ContentPage.Resources>-->
+    </ContentPage.Resources>
     
     <ContentPage.Content>
         <ScrollView x:Name="MyScrollView">
@@ -21,44 +21,52 @@
             </ScrollView.Effects>
             <AbsoluteLayout class="profile-content">
                 <!-- TODO Header Image -->
-                
+                <Image Source="bg_seattle"
+                       AbsoluteLayout.LayoutBounds="0,0,1,292"
+                       AbsoluteLayout.LayoutFlags="WidthProportional"
+                       Aspect="AspectFill"/>
                 
                 <Image Source="photo_overlay"
                        AbsoluteLayout.LayoutBounds="0,0,1,292"
                        AbsoluteLayout.LayoutFlags="WidthProportional"
                        Aspect="AspectFill"/>
 
-                <StackLayout 
-                    Orientation="Vertical" 
-                    HorizontalOptions="Center"
+                <FlexLayout 
+                    Direction="Column"
+                    AlignItems="Center"
                     AbsoluteLayout.LayoutBounds="0,80,1,160"
                     AbsoluteLayout.LayoutFlags="WidthProportional">
                     
                     <controls:CircleImage Source="profile" WidthRequest="80" HeightRequest="80" Aspect="AspectFill" />
                     <Label Text="David Ortinau" TextColor="White" FontSize="28" HorizontalTextAlignment="Center"/>
                     <Label Text="Mobile Developer" TextColor="#999999" FontSize="18" HorizontalTextAlignment="Center"/>
-                </StackLayout>
+                </FlexLayout>
 
 
-                <StackLayout AbsoluteLayout.LayoutBounds="0, 270, 1, 1"
-                        AbsoluteLayout.LayoutFlags="SizeProportional">
+                <StackLayout 
+                    Spacing="0"
+                    AbsoluteLayout.LayoutBounds="0, 270, 1, 1"
+                    AbsoluteLayout.LayoutFlags="SizeProportional">
                     
                     <!-- This is the white slice overlaying the header image -->
                     <skia:SKCanvasView 
                         HeightRequest="70"
                         PaintSurface="OnCanvasViewPaintSurface" />
                     
-                    <FlexLayout x:Name="FlexContainer">
+                    <FlexLayout x:Name="FlexContainer" class="bio-container">
                         <!-- TODO Update Bio -->
                         <Label Text="Bio" 
+                               class="group-title"
+                               FlexLayout.Basis="100%"
                                HeightRequest="20" 
                          />
                         <BoxView 
                             Margin="0,5"
+                            FlexLayout.Basis="100%"
                             BackgroundColor="#1D1D26" HeightRequest="1" HorizontalOptions="FillAndExpand"/>
 
                         <Label Text="What would you like people to know about you?" 
-                               FontSize="12" 
+                               FontSize="18" 
                                TextColor="#1D1D26"
                                />
 
@@ -79,7 +87,7 @@
                 </StackLayout>
 
                 <!-- REMOVE ME -->
-                <FlexLayout
+                <!--<FlexLayout
                     Margin="-10"
                     Direction="Column" 
                     AlignContent="Center" 
@@ -94,7 +102,7 @@
                             Margin="20,0"
                             Style="{StaticResource OutlineButton}"
                             Clicked="GoToXamarinBooth"/>
-                </FlexLayout>
+                </FlexLayout>-->
                 <!-- / REMOVE ME -->
             </AbsoluteLayout>
         </ScrollView>

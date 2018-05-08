@@ -128,6 +128,11 @@
     <BundleResource Include="Resources\iconSyncfusion.png" />
     <BundleResource Include="Resources\iconSyncfusion%402x.png" />
     <BundleResource Include="Resources\iconSyncfusion%403x.png" />
+    <BundleResource Include="Resources\bg_cube.png" />
+    <BundleResource Include="Resources\bg_junkbot.png" />
+    <BundleResource Include="Resources\bg_surface_beach.png" />
+    <BundleResource Include="Resources\bg_surface_desktop.png" />
+    <BundleResource Include="Resources\bg_surface_studio.png" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
