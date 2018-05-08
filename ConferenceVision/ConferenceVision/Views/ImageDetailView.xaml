@@ -92,8 +92,13 @@
                         <Label Text="{Binding VisionTags}" FontSize="12" TextColor="#1D1D26" Opacity="0.5"/>
                         <BoxView BackgroundColor="#1D1D26" HeightRequest="1" HorizontalOptions="FillAndExpand"/>
 
-                        
-                    </StackLayout>
+						<Label Text="Help Train Computer Vision AI" FontSize="15" TextColor="#1D1D26"/>
+						<Button x:Name="SendToVisionButton"
+                                Style="{StaticResource OutlineButtonDark}"
+                                Text="Send to Training API"
+                                Clicked="Handle_SendToVisionButtonClicked"/>
+						<BoxView BackgroundColor="#1D1D26" HeightRequest="1" HorizontalOptions="FillAndExpand"/>
+					</StackLayout>
                 </StackLayout>
                 <Button 
                     x:Name="twitter"

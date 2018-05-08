@@ -7,6 +7,6 @@
 		public string Icon { get; set; }
 		public bool IsAchieved { get; set; }
 		public string Url { get; set; }
-		public bool HasDarkImage { get; set; }
+		public bool HasDarkImage { get; set; }		
 	}
 }

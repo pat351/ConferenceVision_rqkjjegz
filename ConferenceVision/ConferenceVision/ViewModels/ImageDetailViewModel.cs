@@ -15,6 +15,7 @@ namespace ConferenceVision.ViewModels
 {
 	public class ImageDetailViewModel : ViewModelBase
 	{
+
 		Memory memory;
 		public Memory Memory
 		{
@@ -40,10 +41,11 @@ namespace ConferenceVision.ViewModels
 			}
 		}
 
-		public ICommand DeleteCommand { get; private set; }
-		public ICommand GetVisionResultsCommand { get; private set; }
-		public ICommand GetAchievementsCommand { get; private set; }
-		public ICommand GoToUrlCommand { get; private set; }
+		public ICommand DeleteCommand { get; }
+		public ICommand GetVisionResultsCommand { get;  }
+		public ICommand GetAchievementsCommand { get;  }
+		public ICommand GoToUrlCommand { get;  }
+		public ICommand SendToVisionCommand { get; }
 
 		public ImageDetailViewModel()
 		{
@@ -72,7 +74,6 @@ namespace ConferenceVision.ViewModels
 
 					}
 				};
-
 			}
 		}
 
@@ -122,7 +123,7 @@ namespace ConferenceVision.ViewModels
 
 			OnPropertyChanged(nameof(VisionNotes));
 			OnPropertyChanged(nameof(VisionTags));
-			OnPropertyChanged(nameof(HasNoVisionResults));
+			OnPropertyChanged(nameof(HasNoVisionResults)); 
 
 			var oldItem = App.DataStore.Memories.FirstOrDefault(e => e.Id == memory.Id);
 
@@ -163,7 +164,7 @@ namespace ConferenceVision.ViewModels
 			{
 				isProcessingVision = value;
 				OnPropertyChanged(nameof(IsProcessingVision));
-				OnPropertyChanged(nameof(HasNoVisionResults));
+				OnPropertyChanged(nameof(HasNoVisionResults)); 
 			}
 		}
 
