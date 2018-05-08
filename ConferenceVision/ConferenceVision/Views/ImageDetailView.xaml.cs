@@ -57,16 +57,19 @@ namespace ConferenceVision.Views
 							vm.ImageSource)
 					  );
 		}
-
-		async void Handle_SendToVisionButtonClicked(object sender, System.EventArgs e)
+		async void Handle_AchievementsClick(object sender, System.EventArgs e)
 		{
-			var page = new ImageTrainingView()
-			{
-				BindingContext = new ImageTrainingViewModel(VM.Memory)
-			};
+			bool beHelpful = await VM.HandleAchievements();
 
-			NavigationPage.SetHasBackButton(page, true);
-			await Navigation.PushAsync(page);
+			if(beHelpful)
+			{
+				var page = new ImageTrainingView()
+				{
+					BindingContext = new ImageTrainingViewModel(VM.Memory)
+				};
+
+				await Navigation.PushAsync(page);
+			}
 		}
 
 		public ImageDetailView()

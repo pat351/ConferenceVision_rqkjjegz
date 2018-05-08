@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 			 xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
-             ios:Page.UseSafeArea="false"
+             ios:Page.UseSafeArea="true"
              x:Class="ConferenceVision.Views.ImageTrainingView"  Padding="0,30,0,0" >
     <ContentPage.Content>
 		<StackLayout>
@@ -27,7 +27,7 @@
 				</ListView.ItemTemplate>
 			</ListView>
 			<ActivityIndicator IsVisible="false" x:Name="ActivitySpinner" Color="{StaticResource callToActionColor}" />
-			<Button BackgroundColor="{StaticResource callToActionColor}" x:Name="SubmitToVision" Clicked="Handle_SendToVisionClicked" Command="{Binding SendToVisionCommand}" Text="Submit Tags"></Button>
+			<Button Margin="15,0,15,0" Style="{StaticResource OutlineButtonDark}" x:Name="SubmitToVision" Clicked="Handle_SendToVisionClicked" Command="{Binding SendToVisionCommand}" Text="Submit Tags"></Button>
 		</StackLayout>
 	</ContentPage.Content>
 </ContentPage>
