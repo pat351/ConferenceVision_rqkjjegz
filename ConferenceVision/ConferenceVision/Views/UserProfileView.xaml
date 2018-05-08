@@ -21,7 +21,7 @@
             </ScrollView.Effects>
             <AbsoluteLayout class="profile-content">
                 <!-- TODO Header Image -->
-                <Image Source="bg_seattle"
+                <Image Source="bg_cube"
                        AbsoluteLayout.LayoutBounds="0,0,1,292"
                        AbsoluteLayout.LayoutFlags="WidthProportional"
                        Aspect="AspectFill"/>
