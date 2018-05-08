@@ -15,6 +15,7 @@ namespace ConferenceVision.ViewModels
 {
 	public class ImageDetailViewModel : ViewModelBase
 	{
+
 		Memory memory;
 		public Memory Memory
 		{
@@ -40,16 +41,15 @@ namespace ConferenceVision.ViewModels
 			}
 		}
 
-		public ICommand DeleteCommand { get; private set; }
-		public ICommand GetVisionResultsCommand { get; private set; }
-		public ICommand GetAchievementsCommand { get; private set; }
-		public ICommand GoToUrlCommand { get; private set; }
+		public ICommand DeleteCommand { get; }
+		public ICommand GetVisionResultsCommand { get;  } 
+		public ICommand GoToUrlCommand { get;  }
+		public ICommand SendToVisionCommand { get; }
 
 		public ImageDetailViewModel()
 		{
 			DeleteCommand = new Command(HandleDelete);
-			GetVisionResultsCommand = new Command(HandleVision);
-			GetAchievementsCommand = new Command(HandleAchievements);
+			GetVisionResultsCommand = new Command(HandleVision); 
 			GoToUrlCommand = new Command<Achievement>(async (model) => await HandleUrl(model));
 
 			if (DesignMode.IsDesignModeEnabled)
@@ -72,7 +72,6 @@ namespace ConferenceVision.ViewModels
 
 					}
 				};
-
 			}
 		}
 
@@ -86,21 +85,22 @@ namespace ConferenceVision.ViewModels
 			DependencyService.Get<DataStoreService>().DeleteMemory(memory);
 		}
 
-		private async void HandleAchievements()
+		public async Task<bool> HandleAchievements()
 		{
 			await DependencyService.Get<VisionService>().DetectAchievements(memory);
-
+			bool beHelpful = false;
 			if (HasNoAchievements)
 			{
-				await App.Current.MainPage.DisplayAlert(
+				beHelpful = await App.Current.MainPage.DisplayAlert(
 					"No Achievement? No way!",
-					"We don't see any achievements here, but we could be wrong. Custom Vision gets better and better with training. Email your photo and the achievement it should have gained to david.ortinau@microsoft.com. New app builds will be shipped throughout Microsoft Build 2018 with updated models.",
-					"Okay"
+					"We don't see any achievements here, but we could be wrong. Custom Vision gets better and better with training. Email your photo and the achievement it should have gained to david.ortinau@microsoft.com or help us train your image right now. New app builds will be shipped throughout Microsoft Build 2018 with updated models.",
+					"Help us Train Right Now!", "Not Now"
 				);
 			}
 
 			OnPropertyChanged(nameof(Achievements));
 			OnPropertyChanged(nameof(HasNoAchievements));
+			return beHelpful;
 		}
 
 		async void HandleVision(object obj)
@@ -122,7 +122,7 @@ namespace ConferenceVision.ViewModels
 
 			OnPropertyChanged(nameof(VisionNotes));
 			OnPropertyChanged(nameof(VisionTags));
-			OnPropertyChanged(nameof(HasNoVisionResults));
+			OnPropertyChanged(nameof(HasNoVisionResults)); 
 
 			var oldItem = App.DataStore.Memories.FirstOrDefault(e => e.Id == memory.Id);
 
@@ -163,7 +163,7 @@ namespace ConferenceVision.ViewModels
 			{
 				isProcessingVision = value;
 				OnPropertyChanged(nameof(IsProcessingVision));
-				OnPropertyChanged(nameof(HasNoVisionResults));
+				OnPropertyChanged(nameof(HasNoVisionResults)); 
 			}
 		}
 

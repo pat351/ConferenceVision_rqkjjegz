@@ -57,6 +57,20 @@ namespace ConferenceVision.Views
 							vm.ImageSource)
 					  );
 		}
+		async void Handle_AchievementsClick(object sender, System.EventArgs e)
+		{
+			bool beHelpful = await VM.HandleAchievements();
+
+			if(beHelpful)
+			{
+				var page = new ImageTrainingView()
+				{
+					BindingContext = new ImageTrainingViewModel(VM.Memory)
+				};
+
+				await Navigation.PushAsync(page);
+			}
+		}
 
 		public ImageDetailView()
 		{

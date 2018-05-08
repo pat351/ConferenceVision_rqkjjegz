@@ -13,6 +13,8 @@ using Plugin.ImageEdit;
 using Xam.Plugins.OnDeviceCustomVision;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training;
+using TrainingTag = Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training.Models.Tag;
 
 namespace ConferenceVision.Services
 {
@@ -20,20 +22,73 @@ namespace ConferenceVision.Services
 	{
 		const double PredictionThreshold = 0.75;
 		const string ComputerVisionKey = "47577899720d4568ba242f577db496a2";
-
+		const string TrainingKey = "f04976e24cb84498bbad256fc216b701";
 		static readonly Dictionary<string, Achievement> Achievements = new AchievementsViewModel().Achievements.ToDictionary(a => a.Name, a => a);
 		static readonly AzureRegions CouputerVisionRegion = AzureRegions.Westus2;
 
 		readonly IComputerVisionAPI visionAPI;
+		readonly TrainingApi trainingApi;
 
 		public VisionService()
 		{
 			var creds = new ApiKeyServiceClientCredentials(ComputerVisionKey);
 			visionAPI = new ComputerVisionAPI(creds) { AzureRegion = CouputerVisionRegion };
+			trainingApi = new TrainingApi() { ApiKey = TrainingKey };
 		}
 
 		public Task<bool> DetectAchievements(Memory memory) => ProcessImageFile(memory, GetAchievementsForImage);
 		public Task AnalyzeImage(Memory memory) => ProcessImageFile(memory, AnalyzeImageStream);
+
+
+		public async Task<bool> CreateImagesFromData(Memory memory, IList<string> tags)
+		{
+			try
+			{
+				if (!tags.Any())
+					return false;
+
+				var project = await trainingApi.GetProjectAsync(new Guid("a7731c4f-8b9f-4012-ab53-98e4e0c48a5b"));
+				var existingTags = await trainingApi.GetTagsAsync(project.Id);
+
+				List<string> tagIds = new List<string>();
+				foreach (var tag in tags)
+				{
+					TrainingTag trainingTag = existingTags.FirstOrDefault(x => x.Name == tag);
+					if (trainingTag == null)
+					{
+						try
+						{
+							trainingTag = await trainingApi.CreateTagAsync(project.Id, tag);
+						}
+						catch (Microsoft.Rest.HttpOperationException)
+						{
+							// just in case there is a collision of tags getting created
+						}
+					}
+
+					if (trainingTag != null)
+					{
+						tagIds.Add(trainingTag.Id.ToString());
+					}
+				}
+
+				var fileName = Path.Combine(DependencyService.Get<IMediaFolder>().Path, $"{memory.MediaPath}"); 
+				var data = File.ReadAllBytes(Path.Combine(DependencyService.Get<IMediaFolder>().Path, $"{memory.MediaPath}")); 
+				using (var s = new MemoryStream(data))
+				{
+				
+					var result = await trainingApi.CreateImagesFromDataAsync(project.Id, s, tagIds);
+					return result.IsBatchSuccessful;					
+				}
+			}
+			catch (Exception e)
+			{
+				Debug.WriteLine($"Exception in {nameof(VisionService)}.{nameof(ProcessImageFile)}: {e.Message}");
+				Debug.WriteLine(e.StackTrace);
+			}
+
+			return false;
+		}
 
 		async Task<bool> ProcessImageFile(Memory memory, Func<Memory, Stream, Task> handler)
 		{

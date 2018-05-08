@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+             ios:Page.UseSafeArea="true"
+             x:Class="ConferenceVision.Views.ImageTrainingView"  Padding="0,30,0,0" >
+    <ContentPage.Content>
+		<StackLayout>
+			<Label HorizontalTextAlignment="End"  FontSize="Medium" TextColor="White" Opacity="0.5" Text="Select tags for your image"></Label>
+			<ListView BackgroundColor="Transparent"  ItemsSource="{Binding AvailableAchievementsSource}"  CachingStrategy="RecycleElement">
+				<ListView.ItemTemplate>
+					<DataTemplate>
+						<ViewCell>
+							<Grid Margin="10,0,0,10">
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="*" />
+									<ColumnDefinition Width="Auto" />
+								</Grid.ColumnDefinitions>
+								<StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
+									<Image Source="{Binding Data.Icon}"/>
+									<Label Text="{Binding Data.Name}" TextColor="White"  />
+								</StackLayout>
+								<Switch IsToggled="{Binding Selected}" Grid.Column="1" />
+							</Grid>
+						</ViewCell>
+					</DataTemplate>
+				</ListView.ItemTemplate>
+			</ListView>
+			<ActivityIndicator IsVisible="false" x:Name="ActivitySpinner" Color="{StaticResource callToActionColor}" />
+			<Button Margin="15,0,15,0" Style="{StaticResource OutlineButtonDark}" x:Name="SubmitToVision" Clicked="Handle_SendToVisionClicked" Command="{Binding SendToVisionCommand}" Text="Submit Tags"></Button>
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>

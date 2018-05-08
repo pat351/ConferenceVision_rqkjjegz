@@ -58,7 +58,7 @@
                                 IsVisible="{Binding HasNoAchievements}"
                                 Style="{StaticResource OutlineButtonDark}"
                                 Text="Nothing? Let's check again."
-                                Command="{Binding GetAchievementsCommand}"/>
+								Clicked="Handle_AchievementsClick"/>
                         
                         <local:RepeaterView x:Name="AchievementsContainer" StyleClass="container" ItemsSource="{Binding Achievements}">
                             <local:RepeaterView.ItemTemplate>
@@ -91,9 +91,7 @@
                         <Label Text="Vision Tags" FontSize="15" TextColor="#1D1D26"/>
                         <Label Text="{Binding VisionTags}" FontSize="12" TextColor="#1D1D26" Opacity="0.5"/>
                         <BoxView BackgroundColor="#1D1D26" HeightRequest="1" HorizontalOptions="FillAndExpand"/>
-
-                        
-                    </StackLayout>
+					</StackLayout>
                 </StackLayout>
                 <Button 
                     x:Name="twitter"
