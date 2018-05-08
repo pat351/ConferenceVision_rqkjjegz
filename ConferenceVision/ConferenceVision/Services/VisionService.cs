@@ -72,9 +72,11 @@ namespace ConferenceVision.Services
 					}
 				}
 
-				var fileName = Path.Combine(DependencyService.Get<IMediaFolder>().Path, $"{memory.MediaPath}");
-				using (var s = new FileStream(fileName, FileMode.Open))
+				var fileName = Path.Combine(DependencyService.Get<IMediaFolder>().Path, $"{memory.MediaPath}"); 
+				var data = File.ReadAllBytes(Path.Combine(DependencyService.Get<IMediaFolder>().Path, $"{memory.MediaPath}")); 
+				using (var s = new MemoryStream(data))
 				{
+				
 					var result = await trainingApi.CreateImagesFromDataAsync(project.Id, s, tagIds);
 					return result.IsBatchSuccessful;					
 				}
