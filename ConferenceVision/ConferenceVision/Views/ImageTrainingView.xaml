@@ -1,27 +1,29 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 			 xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
              ios:Page.UseSafeArea="true"
              x:Class="ConferenceVision.Views.ImageTrainingView"  Padding="0,30,0,0" >
     <ContentPage.Content>
-		<StackLayout>
-			<Label HorizontalTextAlignment="End"  FontSize="Medium" TextColor="White" Opacity="0.5" Text="Select tags for your image"></Label>
-			<ListView BackgroundColor="Transparent"  ItemsSource="{Binding AvailableAchievementsSource}"  CachingStrategy="RecycleElement">
+		<StackLayout Margin="10,0">
+			<Label Text="Select tags for your image:"></Label>
+            <BoxView HeightRequest="1" BackgroundColor="White" HorizontalOptions="Fill" Margin="0,10"/>
+			<ListView BackgroundColor="Transparent" 
+                      RowHeight="60"
+                      ItemsSource="{Binding AvailableAchievementsSource}" 
+                      CachingStrategy="RecycleElement">
 				<ListView.ItemTemplate>
 					<DataTemplate>
 						<ViewCell>
-							<Grid Margin="10,0,0,10">
-								<Grid.ColumnDefinitions>
-									<ColumnDefinition Width="*" />
-									<ColumnDefinition Width="Auto" />
-								</Grid.ColumnDefinitions>
-								<StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
-									<Image Source="{Binding Data.Icon}"/>
-									<Label Text="{Binding Data.Name}" TextColor="White"  />
-								</StackLayout>
-								<Switch IsToggled="{Binding Selected}" Grid.Column="1" />
-							</Grid>
+                            <FlexLayout Direction="Row"
+                                        HeightRequest="30"
+                                        VerticalOptions="Center">
+                                <Image Source="{Binding Data.Icon}" HeightRequest="30" FlexLayout.Basis="10%" />
+                                <Label Text="{Binding Data.Name}" Margin="10,0" VerticalTextAlignment="Center" HeightRequest="30" TextColor="White" FlexLayout.Basis="70%"/>
+                                <Switch IsToggled="{Binding Selected}" 
+                                        FlexLayout.AlignSelf="End"
+                                        FlexLayout.Basis="20%"/>
+                            </FlexLayout>
 						</ViewCell>
 					</DataTemplate>
 				</ListView.ItemTemplate>

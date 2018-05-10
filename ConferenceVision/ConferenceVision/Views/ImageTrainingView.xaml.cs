@@ -11,21 +11,35 @@ using Xamarin.Forms.Xaml;
 
 namespace ConferenceVision.Views
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class ImageTrainingView : ContentPage
 	{
-		public ImageTrainingView ()
+		ImageTrainingViewModel vm;
+
+		public ImageTrainingViewModel ViewModel
 		{
-			InitializeComponent ();
+			get => vm; set
+			{
+				vm = value;
+				BindingContext = vm;
+			}
+		}
+
+		public ImageTrainingView()
+		{
+			InitializeComponent();
+
 			NavigationPage.SetHasNavigationBar(this, true);
 			NavigationPage.SetBackButtonTitle(this, string.Empty);
+
+			if (DesignMode.IsDesignModeEnabled)
+				ViewModel = new ImageTrainingViewModel(new Models.Memory());
 		}
 
 		private async void Handle_SendToVisionClicked(object sender, EventArgs e)
 		{
 			try
 			{
-				var vm = BindingContext as ImageTrainingViewModel;
+
 				ActivitySpinner.IsVisible = true;
 				ActivitySpinner.IsRunning = true;
 				SubmitToVision.IsVisible = false;
@@ -43,7 +57,7 @@ namespace ConferenceVision.Views
 					}
 				});
 			}
-			catch(Exception exc)
+			catch (Exception exc)
 			{
 				Debug.WriteLine($"Handle_SendToVisionClicked Failed {exc}");
 			}

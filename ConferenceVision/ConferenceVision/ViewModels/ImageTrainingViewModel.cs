@@ -17,10 +17,11 @@ namespace ConferenceVision.ViewModels
 
 		public ImageTrainingViewModel(Memory memory)
 		{
-			AvailableAchievementsSource = 
+
+			AvailableAchievementsSource =
 				AvailableAchievements
-					.Select(a => new SelectableData() { Data = a, Selected = memory.Achievements.Where(x=> x.IsAchieved).Any(ma => ma.Name == a.Name)})
-					.OrderBy(x=> x.Data.Name)
+					.Select(a => new SelectableData() { Data = a, Selected = memory.Achievements.Where(x => x.IsAchieved).Any(ma => ma.Name == a.Name) })
+					.OrderBy(x => x.Data.Name)
 					.ToList();
 
 			_memory = memory;
@@ -34,7 +35,7 @@ namespace ConferenceVision.ViewModels
 				.CreateImagesFromData(_memory, tags);
 		}
 
-		public IList<SelectableData> AvailableAchievementsSource { get; } 
+		public IList<SelectableData> AvailableAchievementsSource { get; }
 
 		public class SelectableData
 		{

@@ -61,11 +61,11 @@ namespace ConferenceVision.Views
 		{
 			bool beHelpful = await VM.HandleAchievements();
 
-			if(beHelpful)
+			if (beHelpful)
 			{
 				var page = new ImageTrainingView()
 				{
-					BindingContext = new ImageTrainingViewModel(VM.Memory)
+					ViewModel = new ImageTrainingViewModel(VM.Memory)
 				};
 
 				await Navigation.PushAsync(page);

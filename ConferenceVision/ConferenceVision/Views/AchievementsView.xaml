@@ -7,6 +7,7 @@
              ios:Page.UseSafeArea="True"
              Title="Achievements"
              x:Class="ConferenceVision.Views.AchievementsView">
+
     <ContentPage.Resources>
         <StyleSheet Source="../Styles/AchievementsView.css"/>
     </ContentPage.Resources>
@@ -25,13 +26,17 @@
                         <On Platform="Android" Value="15,50,15,0"/>
                     </OnPlatform>
                 </ScrollView.Margin>
-                <local:RepeaterView x:Name="AchievementsContainer" StyleClass="container" ItemsSource="{Binding Achievements}">
+            
+                <local:RepeaterView x:Name="AchievementsContainer" 
+                                    class="container"
+                                    ItemsSource="{Binding Achievements}">
                     <local:RepeaterView.ItemTemplate>
                         <DataTemplate>
                             <local:AchievementView class="item" />
                         </DataTemplate>
                     </local:RepeaterView.ItemTemplate>
                 </local:RepeaterView>
+            
             </ScrollView>
         
     </ContentPage.Content>

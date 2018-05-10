@@ -87,7 +87,7 @@
                 </StackLayout>
 
                 <!-- REMOVE ME -->
-                <!--<FlexLayout
+                <FlexLayout
                     Margin="-10"
                     Direction="Column" 
                     AlignContent="Center" 
@@ -96,13 +96,15 @@
                     AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
                     AbsoluteLayout.LayoutFlags="All">
                     <Label Text="Yikes, this could look so much better! Visit the Xamarin booth to personlize it in just 5 minutes." 
+                           FontSize="28"
                            HorizontalTextAlignment="Center" 
+                           HeightRequest="400"
                            Margin="20"/>
                     <Button Text="WHERE IS XAMARIN?" 
                             Margin="20,0"
                             Style="{StaticResource OutlineButton}"
                             Clicked="GoToXamarinBooth"/>
-                </FlexLayout>-->
+                </FlexLayout>
                 <!-- / REMOVE ME -->
             </AbsoluteLayout>
         </ScrollView>

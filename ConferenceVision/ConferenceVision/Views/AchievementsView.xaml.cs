@@ -1,4 +1,5 @@
 ﻿using ConferenceVision.ViewModels;
+using ConferenceVision.Views.Renderers;
 using Xamarin.Forms;
 
 namespace ConferenceVision.Views
@@ -27,6 +28,8 @@ namespace ConferenceVision.Views
 		{
 			base.OnAppearing();
 			vm?.OnAppearing();
+
+
 		}
 
 		async void Handle_InfoClicked(object sender, System.EventArgs e)

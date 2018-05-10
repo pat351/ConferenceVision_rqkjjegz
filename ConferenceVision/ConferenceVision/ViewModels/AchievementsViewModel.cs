@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using ConferenceVision.Models;
 using ConferenceVision.ViewModels.Base;
+using Xamarin.Forms;
 
 namespace ConferenceVision.ViewModels
 {
@@ -10,7 +11,15 @@ namespace ConferenceVision.ViewModels
 	{
 		public AchievementsViewModel()
 		{
-			UpdateUserAchievements();
+			if (DesignMode.IsDesignModeEnabled)
+			{
+				achievements.Select(c => { c.IsAchieved = true; return c; }).ToList();
+				OnPropertyChanged(nameof(Achievements));
+			}
+			else
+			{
+				UpdateUserAchievements();
+			}
 		}
 
 		void UpdateUserAchievements()

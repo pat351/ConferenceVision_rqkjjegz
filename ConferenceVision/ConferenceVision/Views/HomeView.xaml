@@ -96,6 +96,12 @@
         </Label>
     </StackLayout>
 
+    <Button Style="{StaticResource IconFontButton}"
+            AbsoluteLayout.LayoutFlags="PositionProportional"
+            AbsoluteLayout.LayoutBounds="0,0.98,40,40"
+            Command="{Binding PickPhotoCommand}"
+            Text="&#xF0AC;"/>
+
     <Button x:Name="AddPhotoButton"
         Image="add_photo.png" 
         AbsoluteLayout.LayoutFlags="PositionProportional"
