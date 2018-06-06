@@ -4,8 +4,9 @@ using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 using UIKit;
 using System;
+using ConferenceVision.Views;
 
-[assembly: ExportRenderer(typeof(NavigationPage), typeof(CustomNavigationRenderer))]
+[assembly: ExportRenderer(typeof(CustomNavigationPage), typeof(CustomNavigationRenderer))]
 namespace ConferenceVision.iOS.Renderers
 {
     public class CustomNavigationRenderer : NavigationRenderer
