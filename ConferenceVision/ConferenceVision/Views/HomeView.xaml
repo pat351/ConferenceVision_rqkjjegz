@@ -136,7 +136,7 @@
             AbsoluteLayout.LayoutBounds="0,0">
             <FlexLayout.Margin>
                 <OnPlatform x:TypeArguments="Thickness" Default="0">
-                    <On Platform="iOS" Value="0,20,0,0"/>
+                    <On Platform="iOS" Value="15,25,15,0"/>
                 </OnPlatform>
             </FlexLayout.Margin>
             <Button
