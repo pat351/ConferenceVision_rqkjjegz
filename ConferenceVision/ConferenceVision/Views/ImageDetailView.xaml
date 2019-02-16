@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
              ios:Page.UseSafeArea="false"
-             x:Name="ImageDetailView"
+             x:Name="self"
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
              xmlns:effects="clr-namespace:ConferenceVision.Effects"
@@ -65,7 +65,7 @@
                                 <DataTemplate>
                                     <Button class="achievement" 
                                             Image="{Binding DarkIcon}" 
-                                            Command="{Binding Path=BindingContext.GoToUrlCommand, Source={x:Reference ImageDetailView}}"
+                                            Command="{Binding Path=BindingContext.GoToUrlCommand, Source={x:Reference self}}"
                                             CommandParameter="{Binding .}"/>
 
                                 </DataTemplate>

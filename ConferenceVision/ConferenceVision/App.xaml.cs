@@ -18,17 +18,6 @@ namespace ConferenceVision
 
 		public App()
 		{
-#if DEBUG
-			/*
-             * Live Reload Preview is Windows only. On macOS it'll do nothing.
-             * 1) Install the VS extension and follow the instructions here https://marketplace.visualstudio.com/items?itemName=Xamarin.XamarinLiveReload
-            */
-			try
-			{
-				LiveReload.Init();
-			}
-			catch { }
-#endif
 			InitializeComponent();
 
 			InitDependencies();
