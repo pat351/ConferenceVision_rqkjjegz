@@ -3,12 +3,14 @@
 # Conference Vision App
 
 Conference Vision is a prototype reference app showcasing:
-- Xamarin.Forms 3.0: 
+- Xamarin.Forms 3.0 Features: 
   - [FlexLayout](https://docs.microsoft.com/xamarin/xamarin-forms/user-interface/layouts/flex-layout)
   - [CSS](https://docs.microsoft.com/xamarin/xamarin-forms/user-interface/styles/css) 
   - [VisualStateManager](https://docs.microsoft.com/xamarin/xamarin-forms/user-interface/visual-state-manager)
 - [Custom Vision](https://customvision.ai)
 - [Computer Vision API](https://azure.microsoft.com/en-us/services/cognitive-services/computer-vision/)
+- Updated to Xamarin.Forms 4.0 Shell
+
 
 Use your camera during a conference to capture your experience. Let Vision do the heavy lifting of identifying known products and scan your images to text for easier searching.
 
