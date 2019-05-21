@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:ConferenceVision.Views"
+    FlyoutIcon="menu.png"
+    BackgroundImageSource="bg_seattle.png"
+    FlyoutBackgroundColor="Black"
+    x:Class="ConferenceVision.AppShell">
+    <Shell.FlyoutHeaderTemplate>
+        <DataTemplate>
+            <ContentView Margin="50"
+                         FlexLayout.Shrink="0"
+                         FlexLayout.AlignSelf="Start">
+                <Image
+                    HeightRequest="30"
+                    WidthRequest="30"
+                    Margin="50,0,0,0"
+                    Source="qrcode"
+                    Aspect="AspectFit"
+                    HorizontalOptions="Start"
+                    BackgroundColor="Transparent">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="DisplayQRShareCode" />
+                    </Image.GestureRecognizers>
+                </Image>
+            </ContentView>
+        </DataTemplate>
+    </Shell.FlyoutHeaderTemplate>
+
+
+    <FlyoutItem Title="Home">
+        <ShellContent ContentTemplate="{DataTemplate views:HomeView}" />
+    </FlyoutItem>
+    <FlyoutItem Title="Achievements">
+        <ShellContent ContentTemplate="{DataTemplate views:AchievementsView}" />
+    </FlyoutItem>
+    <FlyoutItem Title="My Profile">
+        <ShellContent ContentTemplate="{DataTemplate views:UserProfileView}" />
+    </FlyoutItem>
+    <FlyoutItem Title="About">
+        <ShellContent ContentTemplate="{DataTemplate views:AboutView}" />
+    </FlyoutItem>
+
+    <Shell.ItemTemplate>
+        <DataTemplate>
+            <StackLayout Padding="50,10,0,0"
+                         HorizontalOptions="FillAndExpand">
+                <Label VerticalOptions="FillAndExpand"
+                       VerticalTextAlignment="Center"
+                       Text="{Binding Title}"
+                       TextColor="White"
+                       FontSize="18" />
+            </StackLayout>
+        </DataTemplate>
+
+    </Shell.ItemTemplate>
+</Shell>

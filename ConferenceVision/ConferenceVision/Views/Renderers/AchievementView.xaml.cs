@@ -6,18 +6,18 @@ using Xamarin.Forms;
 
 namespace ConferenceVision.Views.Renderers
 {
-	public partial class AchievementView : FlexLayout
-	{
-		public AchievementView()
-		{
-			InitializeComponent();
-		}
+    public partial class AchievementView : Frame
+    {
+        public AchievementView()
+        {
+            InitializeComponent();
+        }
 
-		async void OpenUrl_ClickedAsync(object sender, System.EventArgs e)
-		{
-			var url = ((Achievement)BindingContext).Url;
-			if (!string.IsNullOrEmpty(url))
-				await Browser.OpenAsync(url);
-		}
-	}
+        async void OpenUrl_ClickedAsync(object sender, System.EventArgs e)
+        {
+            var url = ((Achievement)BindingContext).Url;
+            if (!string.IsNullOrEmpty(url))
+                await Browser.OpenAsync(url);
+        }
+    }
 }

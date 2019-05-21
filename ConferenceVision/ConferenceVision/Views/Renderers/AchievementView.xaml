@@ -1,26 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<FlexLayout xmlns="http://xamarin.com/schemas/2014/forms" 
-      xmlns:converters="clr-namespace:ConferenceVision.Converters"
-      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-      WidthRequest="90" HeightRequest="110"
-      Direction="Column" AlignContent="Center"
-      Opacity="{Binding IsAchieved, Converter={StaticResource AchievedOpacityConverter}}"
-      x:Class="ConferenceVision.Views.Renderers.AchievementView"
-      x:Name="self">
-    
-    <Button BorderColor="#fff"
-            BorderWidth="1"
-            BackgroundColor="#4D000000"
+<Frame xmlns="http://xamarin.com/schemas/2014/forms"
+       xmlns:converters="clr-namespace:ConferenceVision.Converters"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       WidthRequest="90"
+       HeightRequest="110"
+       HasShadow="false"
+       HorizontalOptions="Start"
+       BackgroundColor="Transparent"
+       Opacity="{Binding IsAchieved, Converter={StaticResource AchievedOpacityConverter}}"
+       x:Class="ConferenceVision.Views.Renderers.AchievementView"
+       x:Name="self">
 
-            HeightRequest="90" CornerRadius="45"
-            Clicked="OpenUrl_ClickedAsync"
-            Image="{Binding Icon}"/>
-    
-     <Label Text="{Binding Name}" 
-            Margin="0,4,0,0"
-            HeightRequest="20"
-            FontSize="9" 
-            HorizontalTextAlignment="Center" 
-            HorizontalOptions="CenterAndExpand"/>
+    <FlexLayout Direction="Column"
+                AlignContent="Center">
+        <Button BorderColor="#fff"
+                BorderWidth="1"
+                BackgroundColor="#4D000000"
+                HeightRequest="90"
+                CornerRadius="45"
+                Clicked="OpenUrl_ClickedAsync"
+                Image="{Binding Icon}" />
 
-</FlexLayout>
+        <Label Text="{Binding Name}"
+               Margin="0,4,0,0"
+               HeightRequest="20"
+               FontSize="9"
+               HorizontalTextAlignment="Center"
+               HorizontalOptions="CenterAndExpand" />
+    </FlexLayout>
+</Frame>
