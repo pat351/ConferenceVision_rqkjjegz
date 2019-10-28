@@ -9,8 +9,9 @@ Conference Vision is a prototype reference app showcasing:
   - [VisualStateManager](https://docs.microsoft.com/xamarin/xamarin-forms/user-interface/visual-state-manager)
 - [Custom Vision](https://customvision.ai)
 - [Computer Vision API](https://azure.microsoft.com/en-us/services/cognitive-services/computer-vision/)
-- Updated to Xamarin.Forms 4.0 Shell
-
+- Updated to Xamarin.Forms 4.3 
+  - Shell
+  - CollectionView
 
 Use your camera during a conference to capture your experience. Let Vision do the heavy lifting of identifying known products and scan your images to text for easier searching.
 
