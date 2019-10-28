@@ -134,6 +134,26 @@
             Value="{StaticResource smallTextSize}" />
     </Style>
 
+    <Style x:Key="BaseStyle"
+           TargetType="Element">
+        <Setter Property="Shell.BackgroundColor"
+                Value="Transparent" />
+        <Setter Property="Shell.ForegroundColor"
+                Value="#ffffff" />
+        <Setter Property="Shell.TitleColor"
+                Value="#ffffff" />
+        <Setter Property="Shell.DisabledColor"
+                Value="#B4FFFFFF" />
+        <Setter Property="Shell.UnselectedColor"
+                Value="#CC0000" />
+        <Setter Property="Shell.FlyoutBehavior"
+                Value="Disabled" />
+    </Style>
+
+    <Style BasedOn="{StaticResource BaseStyle}"
+           ApplyToDerivedTypes="True"
+           TargetType="FlyoutItem" />
+
     <converters:ImageSourceConverter x:Key="ImageSourceConverter" />
     <converters:AchievedOpacityConverter x:Key="AchievedOpacityConverter" />
 

@@ -11,17 +11,6 @@ namespace ConferenceVision.Views
 {
 	public partial class ImageDetailView : ContentPage
 	{
-		private ImageDetailViewModel vm;
-
-		public ImageDetailViewModel VM
-		{
-			get => vm; set
-			{
-				vm = value;
-				BindingContext = vm;
-			}
-		}
-
 		void OnCanvasViewPaintSurface(object sender, SKPaintSurfaceEventArgs args)
 		{
 			var w = args.Info.Size.Width;
@@ -54,7 +43,7 @@ namespace ConferenceVision.Views
 					   "Check out this photo I took at #MSBuild with the #XamarinForms + #vision_api app I made. Get the app and code: https://aka.ms/cv-app",
 					   System.IO.Path.Combine(
 							DependencyService.Get<IMediaFolder>().Path,
-							vm.ImageSource)
+							VM.ImageSource)
 					  );
 		}
 		async void Handle_AchievementsClick(object sender, System.EventArgs e)
@@ -83,12 +72,6 @@ namespace ConferenceVision.Views
 			this.Padding = 0;
 
 			NavigationPage.SetBackButtonTitle(this, string.Empty);
-
-			if (DesignMode.IsDesignModeEnabled)
-			{
-				VM = new ImageDetailViewModel();
-			}
-
 		}
 
 		async void Handle_DeleteClickedAsync(object sender, System.EventArgs e)

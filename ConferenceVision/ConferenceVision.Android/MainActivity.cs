@@ -29,9 +29,9 @@ namespace ConferenceVision.Droid
 
 			base.OnCreate(bundle);
 
-			// Hello Xamarin.Forms!
-			Forms.SetFlags("FastRenderers_Experimental");
-			global::Xamarin.Forms.Forms.Init(this, bundle);
+            // Hello Xamarin.Forms!
+            global::Xamarin.Forms.Forms.SetFlags("CarouselView_Experimental");
+            global::Xamarin.Forms.Forms.Init(this, bundle);
 
 			// Init 3rd Party Libs
 			CachedImageRenderer.Init(enableFastRenderer: true);

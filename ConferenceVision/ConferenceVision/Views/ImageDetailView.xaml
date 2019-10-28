@@ -8,7 +8,13 @@
              xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
              xmlns:effects="clr-namespace:ConferenceVision.Effects"
              xmlns:local="clr-namespace:ConferenceVision.Views.Renderers"
+             xmlns:vm="clr-namespace:ConferenceVision.ViewModels"
              x:Class="ConferenceVision.Views.ImageDetailView">
+
+    <ContentPage.BindingContext>
+        <vm:ImageDetailViewModel x:Name="VM"/>
+    </ContentPage.BindingContext>
+
     <ContentPage.Resources>
         <StyleSheet Source="../Styles/ImageDetailView.css"/>
     </ContentPage.Resources>

@@ -10,6 +10,13 @@ namespace ConferenceVision
         public AppShell()
         {
             InitializeComponent();
+
+            InitRoutes();
+        }
+
+        private void InitRoutes()
+        {
+            Routing.RegisterRoute("details", typeof(ImageDetailView));
         }
 
         async void DisplayQRShareCode(object sender, System.EventArgs e)

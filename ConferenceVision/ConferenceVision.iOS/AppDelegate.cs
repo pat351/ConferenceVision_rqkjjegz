@@ -12,8 +12,9 @@ namespace ConferenceVision.iOS
 	{
 		public override bool FinishedLaunching(UIApplication app, NSDictionary options)
 		{
-			// Hello Xamarin.Forms!
-			global::Xamarin.Forms.Forms.Init();
+            // Hello Xamarin.Forms!
+            global::Xamarin.Forms.Forms.SetFlags("CarouselView_Experimental");
+            global::Xamarin.Forms.Forms.Init();
 
 			// Init 3rd Party Libs
 			FFImageLoading.Forms.Platform.CachedImageRenderer.Init();

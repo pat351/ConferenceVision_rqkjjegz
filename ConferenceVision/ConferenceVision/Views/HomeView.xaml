@@ -5,11 +5,9 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             xmlns:vm="clr-namespace:ConferenceVision.ViewModels"
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-             xmlns:converters="clr-namespace:ConferenceVision.Converters"
-             xmlns:myeffects="clr-namespace:ConferenceVision.Effects"
              xmlns:effects="clr-namespace:FormsCommunityToolkit.Effects;assembly=FormsCommunityToolkit.Effects"
-             xmlns:carousel="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              ios:Page.UseSafeArea="false"
              Title="">
@@ -22,32 +20,35 @@
         <ToolbarItem Icon="search"
                      Clicked="Search_Clicked" />
     </ContentPage.ToolbarItems>
-    <AbsoluteLayout Padding="0,10">
+    <AbsoluteLayout Padding="0,28,0,0">
 
-        <ListView x:Name="MediaList"
-                  AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+        <CollectionView x:Name="MediaList"
+                  AbsoluteLayout.LayoutBounds="0, 80, 1, 1"
                   AbsoluteLayout.LayoutFlags="SizeProportional"
-                  SeparatorVisibility="None"
                   BackgroundColor="Transparent"
-                  RowHeight="340"
-                  HasUnevenRows="false"
-                  CachingStrategy="RecycleElement"
-                  ItemTapped="Handle_ItemTappedAsync"
-                  myeffects:ContentInsetAdjustmentBehavior.ContentInset="0,100,0,0"
                   ItemsSource="{Binding Memories, Mode=OneWay}">
-            <d:ListView.ItemsSource>
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical"
+                                   SnapPointsType="Mandatory"
+                                   ItemSpacing="15"/>
+            </CollectionView.ItemsLayout>
+            <d:CarouselView.ItemsSource>
                 <x:Array Type="{x:Type x:String}">
                     <x:String>Image</x:String>
                     <x:String>Image</x:String>
                     <x:String>Image</x:String>
                     <x:String>Image</x:String>
                 </x:Array>
-            </d:ListView.ItemsSource>
-            <ListView.ItemTemplate>
+            </d:CarouselView.ItemsSource>
+            <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <ViewCell>
                         <StackLayout Spacing="0"
                                      Margin="0,0,0,10">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:HomeViewModel}}, Path=ItemTappedCommand}"                                    
+                                                      CommandParameter="{Binding .}"
+                                                      />
+                            </StackLayout.GestureRecognizers>
                             <ffimageloading:CachedImage
                                 WidthRequest="300"
                                 HeightRequest="300"
@@ -78,10 +79,9 @@
                                    HorizontalOptions="FillAndExpand" />
 
                         </StackLayout>
-                    </ViewCell>
                 </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
 
         <StackLayout
             x:Name="EmptyView"

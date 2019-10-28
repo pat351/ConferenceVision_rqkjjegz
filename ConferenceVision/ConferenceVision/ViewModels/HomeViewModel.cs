@@ -17,11 +17,20 @@ namespace ConferenceVision.ViewModels
 		public HomeViewModel()
 		{
 			PickPhotoCommand = new Command(HandlePickPhoto);
-		}
+            ItemTappedCommand = new Command<Memory>(HandleItemTapped);
 
-		public ICommand PickPhotoCommand { get; }
+        }
 
-		async void HandlePickPhoto()
+        private async void HandleItemTapped(Memory memory)
+        {
+            await Shell.Current.GoToAsync($"details?id={memory.Id}");
+        }
+
+        public Command PickPhotoCommand { get; }
+
+        public Command ItemTappedCommand { get; }
+
+        async void HandlePickPhoto()
 		{
 			var file = await CrossMedia.Current.PickPhotoAsync();
 			if (file != null)

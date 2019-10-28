@@ -1,6 +1,7 @@
 ﻿using System;
 using Android.Content;
 using Android.Graphics.Drawables;
+using Android.Support.V4.Content.Res;
 using ConferenceVision.Droid.Renderers;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
@@ -27,7 +28,7 @@ namespace ConferenceVision.Droid.Renderers
 
             try
             {
-                var d = Resources.GetDrawable(Resource.Drawable.bg_shadow);
+                var d = ResourcesCompat.GetDrawable(Resources, Resource.Drawable.bg_shadow, null);
                 this.SetBackground(d);
 
             }
@@ -36,42 +37,5 @@ namespace ConferenceVision.Droid.Renderers
                 System.Diagnostics.Debug.WriteLine(@"            ERROR: ", ex.Message);
             }
         }
-
-        //void UpdateBackground(bool setBkndColorEvenWhenItsDefault)
-        //{
-        //    Page page = Element;
-        //    this.SetBackgroundDrawable(Resource.Drawable.bg_shadow);
-
-        //    _ = this.ApplyDrawableAsync(page, Page.BackgroundImageSourceProperty, Context, drawable =>
-        //    {
-        //        if (drawable != null)
-        //        {
-        //            this.SetBackground(drawable);
-        //        }
-        //        else
-        //        {
-        //            Color bkgndColor = page.BackgroundColor;
-        //            bool isDefaultBkgndColor = bkgndColor.IsDefault;
-        //            if (page.Parent is BaseShellItem && isDefaultBkgndColor)
-        //            {
-        //                var color = Forms.IsMarshmallowOrNewer ?
-        //                    Context.Resources.GetColor(AColorRes.BackgroundLight, Context.Theme) :
-        //                    new AColor(ContextCompat.GetColor(Context, global::Android.Resource.Color.BackgroundLight));
-        //                SetBackgroundColor(color);
-        //            }
-        //            else if (!isDefaultBkgndColor || setBkndColorEvenWhenItsDefault)
-        //            {
-        //                SetBackgroundColor(bkgndColor.ToAndroid());
-        //            }
-        //        }
-        //    });
-        //}
-
-        //public override void ViewDidLayoutSubviews()
-        //{
-        //    base.ViewDidLayoutSubviews();
-
-        //    BGImage.Frame = NativeView.Bounds;
-        //}
     }
 }

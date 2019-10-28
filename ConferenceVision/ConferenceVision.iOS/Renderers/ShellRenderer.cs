@@ -5,10 +5,10 @@ using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
-[assembly: ExportRenderer(typeof(Shell), typeof(ConferenceVision.iOS.Renderers.XappyShellRenderer))]
+[assembly: ExportRenderer(typeof(Shell), typeof(ConferenceVision.iOS.Renderers.ShellRenderer))]
 namespace ConferenceVision.iOS.Renderers
 {
-    public class XappyShellRenderer : ShellRenderer
+    public class ShellRenderer : Xamarin.Forms.Platform.iOS.ShellRenderer
     {
         private UIImageView _flyoutBackground = null;
 

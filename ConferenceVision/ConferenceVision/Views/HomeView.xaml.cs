@@ -4,6 +4,7 @@ using ConferenceVision.ViewModels;
 using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
@@ -57,7 +58,7 @@ namespace ConferenceVision.Views
 
             NavigationPage.SetBackButtonTitle(this, string.Empty);
 
-            MediaList.DeselectOnTap();
+            //MediaList.DeselectOnTap();
             MessagingCenter.Unsubscribe<CameraView, Memory>(this, "GoToImage");
         }
 
@@ -73,13 +74,9 @@ namespace ConferenceVision.Views
             {
                 await Navigation.PushModalAsync(new CameraView(), true);
                 MessagingCenter.Subscribe<CameraView, Memory>(this, "GoToImage", async (s, arg) =>
-                      await Navigation.PushAsync(new ImageDetailView()
-                      {
-                          VM = new ImageDetailViewModel()
-                          {
-                              Memory = arg
-                          }
-                      })
+                {
+                    await Shell.Current.GoToAsync($"details?id={arg.Id}");
+                }
                 );
             }
         }
@@ -114,17 +111,6 @@ namespace ConferenceVision.Views
 
         }
 
-        async void Handle_ItemTappedAsync(object sender, Xamarin.Forms.ItemTappedEventArgs e)
-        {
-            await Navigation.PushAsync(new ImageDetailView()
-            {
-                VM = new ImageDetailViewModel()
-                {
-                    Memory = (Memory)e.Item
-                }
-            });
-        }
-
         async void GoToSearchActivityAsync(object sender, System.EventArgs e)
         {
             await Navigation.PushModalAsync(new HomeworkView()
@@ -132,5 +118,6 @@ namespace ConferenceVision.Views
                 MarkdownFile = "Activity_ImplementSearch.md"
             }, true);
         }
+
     }
 }

@@ -7,6 +7,7 @@
     BackgroundImageSource="bg_seattle.png"
     FlyoutBackgroundColor="Black"
     x:Class="ConferenceVision.AppShell">
+
     <Shell.FlyoutHeaderTemplate>
         <DataTemplate>
             <ContentView Margin="50"
@@ -15,7 +16,7 @@
                 <Image
                     HeightRequest="30"
                     WidthRequest="30"
-                    Margin="50,0,0,0"
+                    Margin="50,80,0,0"
                     Source="qrcode"
                     Aspect="AspectFit"
                     HorizontalOptions="Start"
@@ -29,16 +30,16 @@
     </Shell.FlyoutHeaderTemplate>
 
 
-    <FlyoutItem Title="Home">
+    <FlyoutItem Title="Home" Style="{StaticResource BaseStyle}">
         <ShellContent ContentTemplate="{DataTemplate views:HomeView}" />
     </FlyoutItem>
-    <FlyoutItem Title="Achievements">
+    <FlyoutItem Title="Achievements" Style="{StaticResource BaseStyle}">
         <ShellContent ContentTemplate="{DataTemplate views:AchievementsView}" />
     </FlyoutItem>
-    <FlyoutItem Title="My Profile">
+    <FlyoutItem Title="My Profile" Style="{StaticResource BaseStyle}">
         <ShellContent ContentTemplate="{DataTemplate views:UserProfileView}" />
     </FlyoutItem>
-    <FlyoutItem Title="About">
+    <FlyoutItem Title="About" Style="{StaticResource BaseStyle}">
         <ShellContent ContentTemplate="{DataTemplate views:AboutView}" />
     </FlyoutItem>
 

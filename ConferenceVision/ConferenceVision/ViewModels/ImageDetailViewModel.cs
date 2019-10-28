@@ -13,8 +13,17 @@ using System;
 
 namespace ConferenceVision.ViewModels
 {
+    [QueryProperty("ID", "id")]
 	public class ImageDetailViewModel : ViewModelBase
 	{
+
+        public string ID
+        {
+            set
+            {
+                Memory = App.DataStore.Memories.FirstOrDefault(e => e.Id == value);
+            }
+        }
 
 		Memory memory;
 		public Memory Memory
@@ -26,10 +35,11 @@ namespace ConferenceVision.ViewModels
 				OnPropertyChanged();
 				OnPropertyChanged(nameof(VisionNotes));
 				OnPropertyChanged(nameof(VisionTags));
+                OnPropertyChanged(nameof(ImageSource));
 			}
 		}
 
-		public string ImageSource => memory.MediaPath;
+		public string ImageSource => memory?.MediaPath;
 		public string VisionNotes => Memory == null ? "" : Memory.Notes;
 		public string VisionTags => Memory == null ? "" : string.Join(" ", Memory.Tags);
 
@@ -37,7 +47,7 @@ namespace ConferenceVision.ViewModels
 		{
 			get
 			{
-				return memory.Achievements;
+				return memory?.Achievements;
 			}
 		}
 
